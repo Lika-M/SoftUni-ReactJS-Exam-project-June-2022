@@ -1,15 +1,31 @@
 import { Link } from 'react-router-dom';
+import {useState, useEffect} from 'react';
+
 import './Catalog.css';
+import {PlantCard} from '../PlantCard/PlantCard.js'
+import * as dataService from '../../services/dataService';
+
 
 export default function Catalog() {
+        const [plants, setPlants] = useState([]);
 
+        useEffect(()=> {
+            dataService.getAll()
+                .then(data => {
+                    setPlants(data);
+                })
+    }, [])
 
+    
     return (
 
         <section id="plants">
             <h2 className="plants-title">All Listings</h2>
             <ul className="plants-list">
-                <li className="plants-item">
+
+            {plants.map(x => <PlantCard key={x._id} data={x} />)}
+
+                {/* <li className="plants-item">
                     <img src="https://previews.123rf.com/images/innagiliarova/innagiliarova2003/innagiliarova200300063/142634383-fantastic-acer-palmatum-palmate-maple-maple-tree-with-bright-red-foliage-little-maple-with-juicy-lea.jpg" alt='plant2' />
                     <div className="plants-item-info">
                         <h3 className="plants-item-name">Japanese maple
@@ -18,6 +34,7 @@ export default function Catalog() {
                             </span>
                         </h3>
                         <p className="plants-item-latin">Acer palmatum</p>
+                        <p className="plants-item-latin">Tree</p>
                         <p className="plants-item-text">
                             This is a species of woody plant native to Japan, Korea and China. Many different cultivars of this maple have been selected and they are grown worldwide for their large variety of attractive forms, leaf shapes, and spectacular colors.
                         </p>
@@ -87,7 +104,7 @@ export default function Catalog() {
                         </p>
                         <Link className="details-btn" to="details">Details</Link>
                     </div>
-                </li>
+                </li> */}
             </ul>
         </section>
     );

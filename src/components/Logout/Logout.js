@@ -1,3 +1,5 @@
+import * as authService from '../../services/authService.js';
+
 export default function Logout() {
 
 
