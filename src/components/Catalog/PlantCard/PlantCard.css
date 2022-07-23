@@ -1,11 +1,10 @@
-@import 'https://use.fontawesome.com/releases/v5.10.2/css/all.css';
-
 #plants {
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
-.plants-title {
+#plants .plants-title {
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
@@ -27,11 +26,11 @@
     font-weight: bold;
     padding: 3px 5px;
     border-radius: 50%;
-    color: #000;
+    color: green;
     margin-left: 12px;
 }
 
-.plants-list {
+#plants .plants-list {
     width: 80%;
     margin: 0 auto 20px auto;
     display: grid;
@@ -39,44 +38,46 @@
     gap: 2.5rem;
 }
 
-.plants-item {
+#plants .plants-item {
     max-width: 350px;
-    height: 350px;
+    height: 400px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
 }
 
-.plants-item img {
+#plants .plants-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.plants-item-info {
+#plants .plants-item-info {
     display: block;
     width: 100%;
     height: 100%;
     position: absolute;
-    bottom: -280px;
-    left: 0;
+    bottom: -335px;
     transition: bottom 300ms ease-in-out;
 }
 
-.plants-item-name {
-    font-size: 1.3rem;
+#plants .plants-item-name {
+    font-size: 1.4rem;
     font-weight: bold;
     color: #fff;
-    margin-bottom: 14px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 1px black;
+    background-color: #83bb5b;
+    padding-bottom: 4px;
 }
 
-.plants-item-latin {
+#plants .plants-item-latin {
     color: #fff;
-    margin-bottom: 22px;
+    margin-bottom: 12px;
     font-style: italic;
 }
 
-.plants-item-text {
+#plants .plants-item-text {
     color: #fff;
     font-size: 16px;
     text-align: justify ;
@@ -85,27 +86,26 @@
     width: 100%;
 }
 
-.details-btn {
+#plants .details-btn {
     border: 4px solid #fff;
     background-color: unset;
     color: #fff;
     padding: 10px 40px;
 }
 
-.details-btn:hover {
+#plants .details-btn:hover {
     font-weight: bold;
     color: green;
     background-color: #fff;
 }
 
-.plants-item-info li a {
-    /* margin: 0 .2rem; */
+#plants .plants-item-info li a {
     font-size: 28px;
     color: #fff;
     transition: color 300ms ease-in-out;
 }
 
-.plants-item-info:hover {  
+#plants .plants-item-info:hover {  
     position: absolute;
     bottom: 0;
     background: #000;
@@ -114,4 +114,5 @@
     width: 100%; 
     height: 100%;
     padding: 40px; 
+    
 }

@@ -1,15 +1,25 @@
-export function login(email, password) {
-
-
-    return fetch('http://localhost:3030/users/login', {
+export async function login(email, password) {
+    const response = await fetch('http://localhost:3030/users/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ email, password })
     })
-        .then(res => res.json())
+    const result = await response.json();
 
+
+    if (response.ok) {
+        return result;
+    } else {
+        throw result.message;
+    }
+}
+
+//Catch errors and show notification
+
+export function logout() {
+    localStorage.removeItem('email');
 }
 
 export function getUserData() {
@@ -17,20 +27,3 @@ export function getUserData() {
     return email;
 }
 
-export function isAuthenticated() {
-    return Boolean(getUserData());
-}
-
-export function logout(email, password) {
-
-
-    return fetch('http://localhost:3030/users/logout', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-    })
-        .then(res => res.json())
-
-}

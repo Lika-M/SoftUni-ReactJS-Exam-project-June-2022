@@ -15,9 +15,20 @@ export default function Login({
         const password = formData.get('password');
 
         authService.login(email, password)
+        .then((userData) => {
+
+            localStorage.setItem('email', email);
+            onLogin(email);
+            
+            navigate('/');
+        })
+        .catch ( err => {
+            //TODO notification
+            console.log(err)
+        })
            
-        onLogin(email);
-        navigate('/');
+      
+  
 
     }
     return (

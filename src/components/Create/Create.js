@@ -7,27 +7,30 @@ export default function Create() {
         <section id="create-listing">
         <div className="container">
             <form id="create-form">
-                <h1>Create Car Listing</h1>
+                <h1>Plant Listing</h1>
                 <p>Please fill in this form to create an listing.</p>
                 <hr/>
+                <p>Plant Name</p>
+                <input type="text" placeholder="Enter Plant Name" name="plant-name" />
 
-                <p>Car Brand</p>
-                <input type="text" placeholder="Enter Car Brand" name="brand" />
+                <p>Latin Name</p>
+                <input type="text" placeholder="Enter Latin Name" name="latin-name" />
 
-                <p>Car Model</p>
-                <input type="text" placeholder="Enter Car Model" name="model" />
+                <p>Plant Exposure</p>
+                <input type="number" placeholder="Enter Plant Exposure" name="exposure" />
+
+                <p>Water Needs</p>
+                <input type="number" placeholder="Enter water Needs" name="watering" />
+  
+                <p>Soil Type</p>
+                <input type="number" placeholder="Enter soil type" name="soil" />
+
+
+                <p>Plant Image</p>
+                <input type="text" placeholder="Enter Plant Image" name="imgUrl" />
 
                 <p>Description</p>
-                <input type="text" placeholder="Enter Description" name="description" />
-
-                <p>Car Year</p>
-                <input type="number" placeholder="Enter Car Year" name="year" />
-
-                <p>Car Image</p>
-                <input type="text" placeholder="Enter Car Image" name="imageUrl" />
-
-                <p>Car Price</p>
-                <input type="number" placeholder="Enter Car Price" name="price" />
+                <textarea type="text"  rows="4" cols="60"placeholder="Enter Description" name="description" />
 
                 <hr/>
                 <input type="submit" className="register-btn" value="Create Listing" />

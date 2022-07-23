@@ -33,6 +33,13 @@ function App() {
     })
   }
 
+  function onLogout () {
+    setUserInfo( {
+      user: '',
+      // isAuthenticated: false
+    })
+  }
+
   return (
     <div className='App'>
       <Header {...userInfo} />
@@ -41,9 +48,9 @@ function App() {
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login onLogin={onLogin} />} />
-        <Route path='/logout' element={<Logout />} />
+        <Route path='/logout' element={<Logout onLogout={onLogout} />} />
         <Route path='/create' element={<Create />} />
-        <Route path='/details/:id' element={<Details />} />
+        <Route path='/details' element={<Details />} />
         <Route path='/about' element={<About />} />
 
       </Routes>
