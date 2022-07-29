@@ -1,13 +1,25 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+
 import * as authService from '../../services/authService.js'
+import { AuthContext } from '../../contexts/AuthContext.js';
 
-export default function Login({
-    onLogin
-}) {
 
+export default function Login() {
+    const { userLogin } = useContext(AuthContext);
+    const [error, setError] = useState({
+        email: '',
+        password: '',
+        match: ''
+    });
+    const [userInput, setUserInput] = useState({
+        email: '',
+        password: ''
+    });
+    let errorMessage = '';
     const navigate = useNavigate();
 
-    function onLoginNav(ev) {
+    const onLoginNav = (ev) => {
         ev.preventDefault();
 
         const formData = new FormData(ev.currentTarget);
@@ -15,22 +27,57 @@ export default function Login({
         const password = formData.get('password');
 
         authService.login(email, password)
-        .then((userData) => {
-
-            localStorage.setItem('email', email);
-            onLogin(email);
-            
-            navigate('/');
-        })
-        .catch ( err => {
-            //TODO notification
-            console.log(err)
-        })
-           
-      
-  
-
+            .then((userData) => {
+                userLogin(userData);
+                navigate('/');
+            })
+            .catch(err => {
+                setError(state => ({
+                    ...state,
+                    match: err
+                }))
+                //TODO notation
+                alert(err);
+            })
     }
+
+    // Controlled form and Validation
+    function onChange(ev) {
+        setUserInput(state => ({
+            ...state,
+            [ev.target.name]: ev.target.value
+        }));
+    };
+
+    function isValidEmail(email) {
+        return /\S+@\S+\.\S+/.test(email);
+    };
+
+    function validateEmail(ev) {
+        let errorMessage = '';
+
+        if (!isValidEmail(ev.target.value)) {
+            errorMessage = 'Enter valid email.'
+        }
+        setError(state => ({
+            ...state,
+            email: errorMessage
+        }));
+    };
+
+    function validatePassword(ev) {
+        if (ev.target.value.length > 15) {
+            errorMessage = 'Password must be no longer than 15 symbols.'
+        } else if (ev.target.value.length < 5) {
+            errorMessage = 'Password must be at least 5 symbols.'
+        }
+
+        setError(state => ({
+            ...state,
+            password: errorMessage
+        }));
+    };
+
     return (
 
         <section id="login">
@@ -39,12 +86,36 @@ export default function Login({
                     <h1>Login</h1>
                     <p>Please enter your credentials.</p>
                     <hr />
-
-                    <p>Email</p>
-                    <input placeholder="Enter Email" name="email" type="email" />
-
-                    <p>Password</p>
-                    <input type="password" placeholder="Enter Password" name="password" />
+                    <div className="email">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="Enter Email"
+                            value={userInput.email}
+                            onChange={onChange}
+                            onBlur={validateEmail}
+                        />
+                        {error.email
+                            ? <p style={{ color: 'red' }}>{error.email}</p>
+                            : null}
+                    </div>
+                    <div className="password">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="Enter Password"
+                            value={userInput.password}
+                            onChange={onChange}
+                            onBlur={validatePassword}
+                        />
+                        {error.password
+                            ? <p style={{ color: 'red' }}>{error.password}</p>
+                            : null}
+                    </div>
                     <hr />
 
                     <input type="submit" className="register-btn" value="Login" />

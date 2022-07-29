@@ -1,29 +1,49 @@
-export async function login(email, password) {
-    const response = await fetch('http://localhost:3030/users/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-    })
-    const result = await response.json();
+import { get, post } from './api.js';
 
-
-    if (response.ok) {
-        return result;
-    } else {
-        throw result.message;
-    }
-}
-
-//Catch errors and show notification
-
-export function logout() {
-    localStorage.removeItem('email');
+const endpoints = {
+    'register': '/users/register',
+    'login': '/users/login',
+    'logout': '/users/logout'
 }
 
 export function getUserData() {
-    const email = localStorage.getItem('email');
-    return email;
+    return JSON.parse(localStorage.getItem('userData'));
+}
+
+export function setUserData(data) {
+    localStorage.setItem('userData', JSON.stringify(data));
+}
+
+export function clearUserData() {
+    localStorage.removeItem('userData');
+}
+
+export async function register(email, password) {
+    const result = await post(endpoints.register, { email, password});
+    const userData = {
+        _id: result._id,
+        email: result.email,
+        password: result.password,
+        token: result.accessToken
+    }
+    setUserData(userData);
+    return result;
+}
+
+export async function login(email, password) {
+    const result = await post(endpoints.login, { email, password });
+    const userData = {
+        _id: result._id,
+        email: result.email,
+        password: result.password,
+        token: result.accessToken
+    }
+    setUserData(userData);
+    return result;
+}
+
+export async function logout() {
+    get(endpoints.logout);
+    clearUserData();
 }
 
