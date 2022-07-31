@@ -1,0 +1,42 @@
+#plants {
+  min-height: calc(100vh - 119px);
+}
+
+.plants-navbar {
+  margin: 0 auto;
+}
+
+.plants-navbar-list {
+  margin: 0 auto;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  padding: 15px 15px;
+
+}
+
+.plants-navbar-list li {
+  display: block;
+  margin: 5px;
+}
+
+.plants-navbar-list li a {
+  width: 100px;
+  text-align: center;
+  display: block;
+  padding: 5px 15px;
+
+  text-decoration: none;
+
+  background: green;
+  color: rgb(255, 255, 255);
+}
+
+/* .button:hover, */
+.plants-navbar-list li a:hover,
+.plants-navbar-list li:hover>a {
+  background: rgb(248, 236, 107);
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}

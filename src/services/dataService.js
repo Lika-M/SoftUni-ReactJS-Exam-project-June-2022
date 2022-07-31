@@ -1,14 +1,35 @@
-const baseUrl = 'http://localhost:3030/jsonstore';
+import * as api from './api.js';
 
-export async function getAll() {
-    const response = await fetch(`${baseUrl}/plants`);
-    const result = await response.json();
-    const data = Object.values(result);
-    return data;
-};
+const endpoints = {
+    all: '/data/plants?sortBy=_createdOn%20desc&distinct=type',
+    create: '/data/plants',
+    itemById: '/data/plants/',
+    edit: '/data/plants/',
+    delete: '/data/pets/',
+}
+
+export async function getAll(type = '') {
+    if (type && type !== 'All') {
+        const url = `/data/plants?where=type%3D%22${type}%22`;
+        return api.get(url)
+    } 
+        return api.get(endpoints.all)
+}
+
 
 export async function getItemById(id) {
-    const response = await fetch(`${baseUrl}/plants/${id}`);
-    const result = await response.json();
-    return result;
+    return api.get(endpoints.itemById + id);
 }
+
+export async function createItem(data) {
+    return api.post(endpoints.create, data);
+}
+
+export async function editItem(data, id) {
+    return api.put(endpoints.edit + id, data);
+}
+
+export async function deleteItemById(id) {
+    return api.delete(endpoints.itemById + id);
+}
+

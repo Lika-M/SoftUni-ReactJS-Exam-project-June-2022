@@ -33,8 +33,9 @@ export default function Register() {
     const email = formData.get('email');
     const password = formData.get('password');
     const repass = formData.get('repass');
-    if (password === repass) passwordMatch = true;
 
+    if (password === repass) passwordMatch = true;
+   
     authService.login(email, password)
       .then((userData) => {
         console.log(userData)
@@ -87,7 +88,7 @@ export default function Register() {
 
   //Need to handle server Error
   // function validateMatch() {
-  //   if (password !== repass) {
+  //   if (!passwordMatch) {
   //     errorMessage = 'passwords don\'t match'
   //   }
   //   setError(state => ({

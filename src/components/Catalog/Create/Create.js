@@ -1,12 +1,41 @@
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import * as dataService from '../../../services/dataService.js'
+import { AuthContext } from '../../../contexts/AuthContext.js';
 
 export default function Create() {
-
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+  
+    const onCreate = (ev) => {
+      ev.preventDefault();
+  
+      const formData = new FormData(ev.currentTarget);
+      const plant = Object.fromEntries(formData);
+      
+      //validation without controlled form
+      const isEmptyField = Object.values(plant).some(x => x === '');
+      
+      if (isEmptyField) {
+        return alert('All fields are required');
+      }
+      
+      dataService.createItem({
+        ...plant,
+        likes: []
+      })
+      .then(result => {
+          navigate('/catalog/all')
+        })
+    }
+  
 
     return (
 
         <section id="create-listing">
             <div className="container">
-                <form id="create-form">
+                <form onSubmit={onCreate} id="create-form">
                     <h1>Plant Listing</h1>
                     <p>Please fill in this form to create an listing.</p>
 
@@ -23,44 +52,47 @@ export default function Create() {
 
                     <label htmlFor="type">Select Plant Type</label>
                     <select type="text" id="type" name="type">
-                        <option class="label"></option>
-                        <option value="trees">Tree</option>
-                        <option value="shrubs">Shrub</option>
-                        <option value="flowers">Flower</option>
-                        <option value="climbers">Climber</option>
-                        <option value="other">Other</option>
+                    <option className="label"></option>
+                        <option defaultValue="trees">Trees</option>
+                        <option defaultValue="shrubs">Shrubs</option>
+                        <option defaultValue="climbers">Climbers</option>
+                        <option defaultValue="flowers">Perennials</option>
+                        <option defaultValue="other">Herbs</option>
                     </select>
 
                     <label htmlFor="exposure">Select Plant Exposure</label>
                     <select type="text" id="exposure" name="exposure">
-                        <option class="label"></option>
-                        <option value="trees">Full Sun</option>
-                        <option value="shrubs">Shade</option>
-                        <option value="flowers">Partial Sun, Shade</option>
+                        <option className="label"></option>
+                        <option defaultValue="trees">Full Sun</option>
+                        <option defaultValue="shrubs">Shade</option>
+                        <option defaultValue="shrubs">Partial Sun</option>
+                        <option defaultValue="flowers">Full Sun, Partial Sun</option>
+                        <option defaultValue="flowers">Partial Sun, Shade</option>
                     </select>
 
                     <label htmlFor="watering">Select Water Needs</label>
                     <select type="text" id="watering" name="watering">
-                        <option value="shrubs"></option>
-                        <option value="shrubs">Average</option>
-                        <option value="trees">Low</option>
-                        <option class="label">High</option>
+                        <option defaultValue="shrubs"></option>
+                        <option defaultValue="shrubs">Average</option>
+                        <option defaultValue="trees">Low</option>
+                        <option className="label">High</option>
                     </select>
             
                     <label htmlFor="soil">Select Soil Type</label>
                     <select type="text" id="soil" name="soil">
-                        <option class="label"></option>
-                        <option value="trees">Chalk</option>
-                        <option value="shrubs">Clay</option>
-                        <option value="flowers">Loam</option>
-                        <option value="flowers">Sand</option>
+                        <option className="label"></option>
+                        <option defaultValue="trees">Chalk</option>
+                        <option defaultValue="shrubs">Clay</option>
+                        <option defaultValue="flowers">Loam</option>
+                        <option defaultValue="flowers">Sand</option>
                     </select>
 
                     <label htmlFor="description">Description</label>
-                    <textarea type="text" id="description" name="description" rows="4" cols="60" placeholder="Enter Description" />
+                    <textarea type="text" id="description" name="description"
+                     rows="4" cols="60" maxLength="270" placeholder="Enter Description" />
 
                     <hr />
-                    <input type="submit" className="register-btn" value="Create Listing" />
+                    <input type="submit" className="register-btn" defaultValue="Create Listing" />
                 </form>
             </div>
         </section>

@@ -2,7 +2,7 @@
 #register,
 #login,
 #create-listing {
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 119px);
     background-image: url("https://images.unsplash.com/photo-1533460004989-cef01064af7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
     background-repeat: no-repeat;
     background-position: center center;
@@ -61,6 +61,7 @@ select[type="text"]:focus {
     margin: 8px 0;
     border: none;
     cursor: pointer;
+    margin-right: 15px;
 }
 
 .container .register-btn:hover {
@@ -94,3 +95,4 @@ option {
     text-align: center;
     font-size: 14px;
 }
+

@@ -49,6 +49,7 @@ function App() {
       <main>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/catalog/:type' element={<Catalog />} />
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />

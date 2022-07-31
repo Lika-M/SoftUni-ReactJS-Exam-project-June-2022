@@ -26,9 +26,9 @@ export default function Header() {
 
     return (
         <header>
-            <nav>
+            <nav className='nav-header'>
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="/catalog">All Listings</NavLink>
+                <NavLink to="/catalog/all">All Listings</NavLink>
                 <NavLink to="javascript:void(0)">By Year</NavLink>
                 {user.email !== ''
                     ? userNav

@@ -31,6 +31,7 @@ function createOptions(method = 'GET', data) {
         options.body = JSON.stringify(data);
     }
     const userData = JSON.parse(localStorage.getItem('userData'));
+    
     if (userData != null) {
         options.headers['X-Authorization'] = userData.token;
     }

@@ -19,7 +19,7 @@ export default function Login() {
     let errorMessage = '';
     const navigate = useNavigate();
 
-    const onLoginNav = (ev) => {
+    const onLogin = (ev) => {
         ev.preventDefault();
 
         const formData = new FormData(ev.currentTarget);
@@ -30,6 +30,7 @@ export default function Login() {
             .then((userData) => {
                 userLogin(userData);
                 navigate('/');
+                console.log(userData);
             })
             .catch(err => {
                 setError(state => ({
@@ -82,7 +83,7 @@ export default function Login() {
 
         <section id="login">
             <div className="container">
-                <form id="login-form" onSubmit={onLoginNav} method="post">
+                <form id="login-form" onSubmit={onLogin} method="post">
                     <h1>Login</h1>
                     <p>Please enter your credentials.</p>
                     <hr />
