@@ -1,11 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-
 import { useState, useEffect } from 'react';
 
-import useLocaleStorage from './hooks/useLocalStorage.js';
 import { AuthContext } from './contexts/AuthContext.js';
 import { DataContext } from './contexts/DataContext.js';
-// import * as authService from './services/authService.js;'
+import useLocaleStorage from './hooks/useLocalStorage.js';
 import * as dataService from './services/dataService.js'
 
 import Header from './components/Header/Header.js';
@@ -19,8 +17,8 @@ import Login from './components/Login/Login.js';
 import Register from './components/Register/Register.js';
 import Logout from './components/Logout/Logout.js';
 import About from './components/About/About.js';
-import './App.css';
 import Dashboard from './components/Dashboard/Dashboard.js';
+import './App.css';
 
 
 function App() {
@@ -59,7 +57,6 @@ function App() {
       updatedItems.push(item); 
       return {
         items: updatedItems,
-        
       }
     })
   }
@@ -74,9 +71,6 @@ function App() {
     })
   }
 
- 
-  console.log(plants);
-
   return (
     <AuthContext.Provider value={{ user, userLogin, userLogout }}>
       <div id="container">
@@ -86,7 +80,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/catalog/:type' element={<Catalog />} />
-              <Route path='/catalog' element={<Dashboard plants={plants} />} />
+              <Route path='/catalog' element={<Dashboard />} />
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />} />
               <Route path='/logout' element={<Logout />} />
@@ -96,7 +90,6 @@ function App() {
               <Route path='/about' element={<About />} />
             </Routes>
           </DataContext.Provider>
-
         </main>
         <Footer />
       </div>
