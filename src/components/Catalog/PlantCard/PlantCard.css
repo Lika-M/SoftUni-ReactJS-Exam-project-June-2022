@@ -1,10 +1,10 @@
 #plants {
-    margin: 0;
+    margin: 10px 0;
     padding: 0;
     text-align: center;
 }
 
-#plants .plants-title {
+ .plants-title {
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
@@ -14,12 +14,12 @@
     margin-bottom: 25px;
 }
 
-#plants .action {
+ .action {
     font-size: 18px;
     color: #fff;
 }
 
-#plants .action i {
+ .action i {
     text-shadow: none;
     background-color: #fff;
     font-size: 14px;
@@ -30,7 +30,7 @@
     margin-left: 12px;
 }
 
-#plants .plants-list {
+ .plants-list {
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -40,7 +40,7 @@
     gap: 2.5rem;
 }
 
-#plants .plants-item {
+ .plants-item {
     max-width: 300px;
     height: 370px;
     position: relative;
@@ -48,13 +48,13 @@
     cursor: pointer;
 }
 
-#plants .plants-item img {
+.plants-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-#plants .plants-item-info {
+ .plants-item-info {
     display: block;
     width: 100%;
     height: 100%;
@@ -63,7 +63,7 @@
     transition: bottom 300ms ease-in-out;
 }
 
-#plants .plants-item-name {
+ .plants-item-name {
     font-size: 1.4rem;
     font-weight: bold;
     color: #fff;
@@ -73,13 +73,13 @@
     padding-bottom: 4px;
 }
 
-#plants .plants-item-latin {
+.plants-item-latin {
     color: #fff;
     margin-bottom: 12px;
     font-style: italic;
 }
 
-#plants .plants-item-text {
+.plants-item-text {
     color: #fff;
     font-size: 16px;
     text-align: justify;
@@ -88,26 +88,26 @@
     width: 100%;
 }
 
-#plants .details-btn {
+.details-btn {
     border: 4px solid #fff;
     background-color: unset;
     color: #fff;
     padding: 10px 40px;
 }
 
-#plants .details-btn:hover {
+ .details-btn:hover {
     font-weight: bold;
     color: green;
     background-color: #fff;
 }
 
-#plants .plants-item-info li a {
+ .plants-item-info li a {
     font-size: 28px;
     color: #fff;
     transition: color 300ms ease-in-out;
 }
 
-#plants .plants-item-info:hover {
+.plants-item-info:hover {
     position: absolute;
     bottom: 0;
     background: #000;

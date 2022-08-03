@@ -1,19 +1,25 @@
 import * as api from './api.js';
 
 const endpoints = {
-    all: '/data/plants?sortBy=_createdOn%20desc&distinct=type',
+    last: '/data/plants?sortBy=_createdOn%20desc',
+    all: '/data/plants',
     create: '/data/plants',
     itemById: '/data/plants/',
     edit: '/data/plants/',
-    delete: '/data/pets/',
+
 }
 
 export async function getAll(type = '') {
-    if (type && type !== 'All') {
-        const url = `/data/plants?where=type%3D%22${type}%22`;
-        return api.get(url)
-    } 
-        return api.get(endpoints.all)
+    // console.log(type);
+    let url = endpoints.all;
+    if (type) {
+        if (type === 'All') {
+            url = endpoints.last;
+        } else {
+            url = `/data/plants?where=type%3D%22${type}%22`;
+        }
+    }
+    return api.get(url);
 }
 
 

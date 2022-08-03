@@ -1,6 +1,7 @@
-#hero {
+.overlay {
     text-align: center;
-    height: calc(100vh - 119px);
+    /* height: calc(100vh - 119px); */
+    height: 100vh ;
     background-image: url("https://images.unsplash.com/photo-1615812383531-739325d763ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
     background-repeat: no-repeat;
     background-position: center center;
@@ -29,17 +30,20 @@
     color: #fff;
     text-shadow: 1px 3px 3px black;
     width: 80%;
-    margin-bottom: 40px;
+    margin-bottom: 100px;
 }
-
 .hero-hashtag {
+    display: flex;
+    background-color:#8cca60;
+}
+.hero-hashtag h2 {
     margin: 0 auto;
     /* max-width: 70%; */
     padding: 5px;
-    font-style: italic;
+    /* font-style: italic; */
     font-weight: lighter;
     font-size: 1.5rem;
-    color: darkgreen;
-    background-color:#8cca60;
+    color: #8cca60;
+    text-shadow: 1px 1px 1px rgb(28, 152, 28);
 }
 

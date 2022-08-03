@@ -11,11 +11,11 @@ export default function Logout() {
     useEffect(() => {
         authService.logout(user.accessToken)
             .then(() => {
-
                 userLogout();
                 navigate('/')
             });
     }, [user.accessToken, userLogout, navigate]);
+    
     return null;
     //or spinner until the promise is resolved
 }

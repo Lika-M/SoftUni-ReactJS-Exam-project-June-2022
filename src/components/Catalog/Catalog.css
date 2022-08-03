@@ -1,5 +1,6 @@
 #plants {
   min-height: calc(100vh - 119px);
+  padding-bottom: 50px;
 }
 
 .plants-navbar {
@@ -33,10 +34,14 @@
   color: rgb(255, 255, 255);
 }
 
-/* .button:hover, */
 .plants-navbar-list li a:hover,
 .plants-navbar-list li:hover>a {
   background: rgb(248, 236, 107);
   color: rgb(0, 0, 0);
   font-weight: bold;
+}
+
+.plants-navbar-list li a.active {
+  background-color: #8cca60;
+    color: black;
 }

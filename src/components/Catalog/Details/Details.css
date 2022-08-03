@@ -46,7 +46,7 @@
   display: inline-block;
   width: 680px;
   background: white;
-  box-shadow: 1px 10px 10px grey;
+  box-shadow: 1px 2px 8px 2px #86ED26;
   padding: 20px;
   position: absolute;
   top: 82%;
@@ -58,7 +58,7 @@
 #card-details .plant-card-info h4 {
   font-size: 20px;
   margin: 0 0 12px 0;
-  color:#77ac51;
+  color: #31D618;
 }
 
 #card-details .plant-card-info-text {
@@ -67,7 +67,7 @@
   display: flex;
   gap: 20px;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items:center;
 }
 
 #card-details .left {
@@ -76,13 +76,12 @@
   margin-bottom: 20px;
 }
 
-#card-details .plant-card-info .left div{
+#card-details .plant-card-info .left div {
   text-align: center;
 }
 
 #card-details .right {
   flex-basis: 60%;
-  margin-bottom: 20px;
 }
 
 #card-details .plant-card-info h6,
@@ -93,7 +92,7 @@
 }
 
 #card-details .plant-card-info-text span {
-  color:#77ac51;
+  color: #31D618;
   font-size: 16px;
   font-weight: bold;
 }
@@ -104,73 +103,46 @@
   margin-bottom: 10px;
 }
 
-#card-details .icon-link {
-  color: #8cca60;
-  transition: 200ms ease-in-out;
-}
-
-#card-details .icon-link:hover {
-  color: #8cca60;
-  text-decoration: none;
-}
-
-#card-details .vote:hover {
-  background-color: #ffb535;
-}
-
-#card-details .btn {
-  background: white;
-  color: #363738;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.6);
-  overflow: hidden;
-  height: 35px;
+#card-details .details-btn {
   display: inline-block;
+  height: 30px;
   margin: 0 10px;
-}
-
-.btn.btn-with-icon {
-  display: inline-block;
-}
-
-.btn.btn-with-icon span {
-  display: inline-block;
-  width: 30px;
-}
-
-#card-details .btn:hover {
-  color: #fff;
-}
-
-#card-details .btn:hover {
-  background-color: #8cca60;
-  color: #fff;
-  transition: 200ms ease-in-out;
-}
-
-#card-details .btn.vote i {
-  background-color: #ffb535;
-}
-
-
-#card-details .btn.vote:hover {
-  background-color: #ffb535;
-}
-
-
-#card-details .btn-with-icon i {
-  padding: 0px 36px 0 15px;
-  line-height: 36px;
-  color: white;
-  background: #8cca60;
-  clip-path: polygon(0 0, 52% 0, 95% 100%, 0% 100%);
-}
-
-
-#card-details .btn.btn-with-icon {
+  width: 150px;
+  border: none;
   font-size: 12px;
   font-weight: bold;
-  text-decoration: none;
-  padding-right: 20px;
+  background-color: #fff;
+  color:#448516;
+  box-shadow: 1px 1px 5px 2px  #86ED26;
+}
+
+#card-details .details-btn:hover {
+  background-color:#448516;
+  box-shadow: 1px 1px 5px 2px rgb(78, 76, 76);
+}
+#card-details .delete.details-btn:hover {
+  background-color: #ffb535;
+}
+
+#card-details .details-btn i {
+  padding-right: 10px;
+  color: #448516;
+} 
+
+#card-details .details-btn span {
+  color: #ffb535;
+}
+
+#card-details .details-btn:hover i,
+#card-details .details-btn:hover span {
+  color: #fff;
+}
+
+.details-btn-close {
+  float: right;
+  background-color: #fff;
+  border: none;
+  color: #448516;
 }
 
 #card-details .rating {
@@ -178,18 +150,14 @@
   margin-bottom: 10px;
 }
 
-#card-details .rating span{
-  color:#ffb535;
+#card-details .rating span {
+  color: #ffb535;
   margin: 3px;
 }
 
-#card-details .plant-card-info-close {
-  float: right;
-  border: none;
-  background-color: #fff;
-  cursor: pointer;
-  color: #ffb535;
+.details {
+  width: 100%;
+  height: 100%;
+  
 }
-
-
 

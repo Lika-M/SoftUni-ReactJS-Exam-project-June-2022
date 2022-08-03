@@ -24,9 +24,9 @@ export default function Register() {
   const navigate = useNavigate();
  
   let errorMessage = '';
-  let passwordMatch = false;
+  // let passwordMatch = false;
 
-  function onRegisterNav(ev) {
+  function onRegister(ev) {
     ev.preventDefault();
 
     const formData = new FormData(ev.target);
@@ -34,11 +34,14 @@ export default function Register() {
     const password = formData.get('password');
     const repass = formData.get('repass');
 
-    if (password === repass) passwordMatch = true;
+    if(password !== repass){
+      return;
+    }
+
+    // if (password === repass) passwordMatch = true;
    
-    authService.login(email, password)
+    authService.register(email, password)
       .then((userData) => {
-        console.log(userData)
 
         userLogin(userData);
         navigate('/');
@@ -100,7 +103,7 @@ export default function Register() {
   return (
     <section id="register">
       <div className="container">
-        <form onSubmit={onRegisterNav} id="register-form">
+        <form onSubmit={onRegister} id="register-form">
           <h1>Register</h1>
           <p>Please fill in this form to create an account.</p>
           <hr />

@@ -30,7 +30,6 @@ export default function Login() {
             .then((userData) => {
                 userLogin(userData);
                 navigate('/');
-                console.log(userData);
             })
             .catch(err => {
                 setError(state => ({
