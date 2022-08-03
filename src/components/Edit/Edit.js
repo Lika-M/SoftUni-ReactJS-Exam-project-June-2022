@@ -2,9 +2,8 @@ import { useContext, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
-import * as dataService from '../../../services/dataService.js'
-// import { AuthContext } from '../../../contexts/AuthContext.js';
-import { DataContext } from '../../../contexts/DataContext.js';
+import * as dataService from '../../services/dataService.js'
+import { DataContext } from '../../contexts/DataContext.js';
 
 export default function Edit() {
 

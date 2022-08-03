@@ -1,4 +1,4 @@
-.overlay {
+#hero .overlay {
     text-align: center;
     /* height: calc(100vh - 119px); */
     height: 100vh ;
@@ -45,5 +45,22 @@
     font-size: 1.5rem;
     color: #8cca60;
     text-shadow: 1px 1px 1px rgb(28, 152, 28);
+}
+
+.site-content{
+    max-height: 500px;
+    text-align: center;
+    margin: 50px;
+}
+
+.site-content-wrapper {
+    margin: 30px auto;
+    max-width: 80%;
+    display: flex;
+    gap: 5%
+}
+
+.site-content-item {
+    flex-basis: 30%;
 }
 

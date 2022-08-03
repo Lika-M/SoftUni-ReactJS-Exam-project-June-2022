@@ -1,0 +1,91 @@
+.home-card {
+    margin: 50px auto;
+    background:url('https://images.unsplash.com/photo-1506968430777-bf7784a87f23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80');
+    box-shadow: 0px 8px 20px 3px;
+    background-repeat:repeat-y;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 20px;
+    height: 100%;
+    width: 850px;
+
+}
+
+.home-card>h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.home-card-item {
+    background-color: #fff;
+    box-shadow: 1px 10px 10px 0px #000;
+    display: flex;
+    max-width: 100%;
+    margin: 60px 100px;
+    overflow: hidden;
+    width: 600px auto;
+    min-height: 210px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.home-card-info {
+    padding: 30px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 5%;
+}
+
+.home-card-info img {
+    margin-top: -10px;
+    width: 200px;
+    height: 160px;
+    padding: 5px;
+    flex-basis: 30%;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.home-card-info-text {
+    text-align: center;
+    position: relative;
+    flex-basis: 30%;
+}
+
+.home-card-info-desc {
+    flex-basis: 30%;
+}
+.home-card-info-text h4,
+.home-card-info-desc h4 {
+    font-size: 16px;
+    font-weight: 750;
+    color: green;
+    margin-bottom: 10px;
+}
+
+.home-card-info-text h3 {
+    text-align: center;
+    font-size: 18px;
+    color: orange;
+}
+
+.home-card-info-desc p {
+    font-size: 14px;
+}
+
+.home-card-info-text .details-button {
+    background-color: green;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 30px;
+    letter-spacing: 1px;
+    position:relative;
+    bottom: -50px;
+   
+}
+

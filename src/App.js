@@ -10,14 +10,14 @@ import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
 import Home from './components/Home/Home.js';
 import Catalog from './components/Catalog/Catalog.js'
-import Create from './components/Catalog/Create/Create.js'
+import Create from './components/Create/Create.js'
 import Details from './components/Catalog/Details/Details.js';
-import Edit from './components/Catalog/Edit/Edit.js';
+import Edit from './components/Edit/Edit.js';
 import Login from './components/Login/Login.js';
 import Register from './components/Register/Register.js';
 import Logout from './components/Logout/Logout.js';
 import About from './components/About/About.js';
-import Dashboard from './components/Dashboard/Dashboard.js';
+import Dashboard from './components/Catalog/Dashboard/Dashboard.js';
 import './App.css';
 
 
@@ -80,7 +80,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/catalog/:type' element={<Catalog />} />
-              <Route path='/catalog' element={<Dashboard />} />
+              <Route path='/catalog' element={<Dashboard plants={plants}/>} />
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />} />
               <Route path='/logout' element={<Logout />} />
@@ -90,6 +90,7 @@ function App() {
               <Route path='/about' element={<About />} />
             </Routes>
           </DataContext.Provider>
+
         </main>
         <Footer />
       </div>

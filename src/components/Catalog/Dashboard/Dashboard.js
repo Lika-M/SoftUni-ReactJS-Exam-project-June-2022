@@ -1,15 +1,12 @@
-import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
-import { DataContext } from "../../contexts/DataContext.js";
+import { PlantCard } from "../PlantCard/PlantCard.js"
 
-import { PlantCard } from "../Catalog/PlantCard/PlantCard.js"
-
-export default function Dashboard() {
-    const plants = useContext(DataContext);
-    const type = plants.currentType ? plants.currentType : "plants";
-    
+export default function Dashboard({plants}) {
+    const type = plants.currentType ? plants.currentType : "All";
+    console.log(type);
     return (
+     
         <section id="plants">
               <nav className="plants-navbar">
                 <ul className="plants-navbar-list">
@@ -28,6 +25,7 @@ export default function Dashboard() {
                 </ul>
                 :  <p style={{fontSize: "20px"}}>{`No ${type[0].toUpperCase() + type.slice(1)} in Database`}</p>}
         </section>
+        
     )
 
 
