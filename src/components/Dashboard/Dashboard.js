@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import { PlantCard } from "../PlantCard/PlantCard.js"
+import { PlantCard } from "../Catalog/PlantCard/PlantCard.js"
 
 export default function Dashboard({plants}) {
     const type = plants.currentType ? plants.currentType : "All";
@@ -10,7 +10,7 @@ export default function Dashboard({plants}) {
         <section id="plants">
               <nav className="plants-navbar">
                 <ul className="plants-navbar-list">
-                    <li><NavLink to="/catalog/all">All</NavLink></li>
+                    <li><NavLink className="latest" to="/catalog/all">Latest Plants</NavLink></li>
                     <li><NavLink to="/catalog/trees">Trees</NavLink></li>
                     <li><NavLink to="/catalog/shrubs">Shrubs</NavLink></li>
                     <li><NavLink to="/catalog/climbers">Climbers</NavLink></li>

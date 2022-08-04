@@ -3,7 +3,7 @@ import { useParams} from 'react-router-dom';
 
 import * as dataService from '../../services/dataService.js';
 import './Catalog.css';
-import Dashboard from './Dashboard/Dashboard.js';
+import Dashboard from '../Dashboard/Dashboard.js';
 
 export default function Catalog() {
 

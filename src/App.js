@@ -11,13 +11,13 @@ import Footer from './components/Footer/Footer.js';
 import Home from './components/Home/Home.js';
 import Catalog from './components/Catalog/Catalog.js'
 import Create from './components/Create/Create.js'
-import Details from './components/Catalog/Details/Details.js';
+import Details from './components/Details/Details.js';
 import Edit from './components/Edit/Edit.js';
 import Login from './components/Login/Login.js';
 import Register from './components/Register/Register.js';
 import Logout from './components/Logout/Logout.js';
 import About from './components/About/About.js';
-import Dashboard from './components/Catalog/Dashboard/Dashboard.js';
+import Dashboard from './components/Dashboard/Dashboard.js';
 import './App.css';
 
 

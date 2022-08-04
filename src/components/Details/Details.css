@@ -1,3 +1,6 @@
+#details {
+  margin: 80px auto;
+}
 #card-details {
   text-align: center;
   vertical-align: middle;
@@ -46,7 +49,7 @@
   display: inline-block;
   width: 680px;
   background: white;
-  box-shadow: 1px 2px 8px 2px #86ED26;
+  box-shadow: 1px 2px 8px 2px #8cca60;
   padding: 20px;
   position: absolute;
   top: 82%;
@@ -56,14 +59,14 @@
 }
 
 #card-details .plant-card-info h4 {
-  font-size: 20px;
-  margin: 0 0 12px 0;
+  font-size: 30px;
+  margin: 0 0 15px 0;
   color: #31D618;
 }
 
 #card-details .plant-card-info-text {
   font-size: 14px;
-  margin: 0 auto;
+  margin: 0 30px;
   display: flex;
   gap: 20px;
   justify-content: space-around;
@@ -71,9 +74,9 @@
 }
 
 #card-details .left {
-  flex-basis: 40%;
+  flex-basis: 30%;
   line-height: 0.8rem;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 #card-details .plant-card-info .left div {
@@ -81,26 +84,27 @@
 }
 
 #card-details .right {
-  flex-basis: 60%;
+  flex-basis: 70%;
 }
 
 #card-details .plant-card-info h6,
 #card-details .plant-card-info p {
   font-size: 14px;
   text-align: left;
-  margin: 3px;
+  margin: 6px;
 }
 
 #card-details .plant-card-info-text span {
   color: #31D618;
   font-size: 16px;
   font-weight: bold;
+  margin-right: 8px;
 }
 
 #card-details .plant-card-info h6 {
   font-style: italic;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #card-details .details-btn {
@@ -112,12 +116,12 @@
   font-size: 12px;
   font-weight: bold;
   background-color: #fff;
-  color:#448516;
-  box-shadow: 1px 1px 5px 2px  #86ED26;
+  color:#31D618;
+  box-shadow: 1px 1px 5px 2px #8cca60;
 }
 
 #card-details .details-btn:hover {
-  background-color:#448516;
+  background-color:#31D618;
   box-shadow: 1px 1px 5px 2px rgb(78, 76, 76);
 }
 #card-details .delete.details-btn:hover {
@@ -126,7 +130,7 @@
 
 #card-details .details-btn i {
   padding-right: 10px;
-  color: #448516;
+  color: #31D618;
 } 
 
 #card-details .details-btn span {
@@ -142,17 +146,25 @@
   float: right;
   background-color: #fff;
   border: none;
-  color: #448516;
+  color: #31D618;
 }
 
 #card-details .rating {
+  text-align: center;
   font-size: 12px;
   margin-bottom: 10px;
 }
 
+#card-details .rating h3 {
+  display: inline-block;
+  margin-right: 5px;
+}
+
 #card-details .rating span {
   color: #ffb535;
-  margin: 3px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 3px ;
 }
 
 .details {

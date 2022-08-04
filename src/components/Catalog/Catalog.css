@@ -8,7 +8,7 @@
 }
 
 .plants-navbar-list {
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   width: 60%;
   display: flex;
   justify-content: center;
@@ -44,4 +44,8 @@
 .plants-navbar-list li a.active {
   background-color: #8cca60;
     color: black;
+}
+
+.plants-navbar-list li a.latest{
+  width: 150px;
 }

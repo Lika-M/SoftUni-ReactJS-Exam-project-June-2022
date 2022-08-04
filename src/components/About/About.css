@@ -1,0 +1,174 @@
+
+.about-wrapper {
+    margin: 48px auto 0 auto;
+    background-color: #fff;
+    box-shadow: 0px 8px 10px 3px;
+    background-repeat: repeat-y;
+    overflow: hidden;
+    /* border-radius: 10px; */
+    padding: 20px;
+    height: 100%;
+    max-width: 80%;
+}
+
+.about-us-content {
+    /* width: 80%; */
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px 0;
+
+}
+
+#about-us .title,
+#about-us .about-description {
+    text-align: center;
+    font-size: 1rem;
+}
+
+#about-us .title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    margin: 1rem;
+}
+
+#about-us .about-description {
+    width: 60%;
+    margin: 0 auto 2rem auto;
+    line-height: 1.3rem;
+}
+
+#about-us .subtitle {
+    max-width: 70%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    letter-spacing: 1.02px;
+    text-transform: capitalize;
+}
+
+#about-us .subtitle.second {
+    text-align: right;
+}
+
+#about-us .description img {
+    max-width: 450px;
+}
+
+#about-us .description {
+    max-width: 80%;
+    overflow: auto;
+    margin: 0 auto;
+    text-align: justify;
+    line-height: 1.3rem;
+    text-indent: 4rem;
+}
+
+#about-us .description.first img {
+    float: left;
+    padding: 6px 2rem 6px 0;
+}
+
+#about-us .description.second img {
+    float: right;
+    padding: 6px 0 6px 2rem;
+}
+
+#about {
+ 
+    background-color: #fff;
+    margin: 50px auto;
+}
+
+#about .about-garden {
+    text-align: center;
+}
+
+#about .about-advice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "picture1 content"
+        "perfect picture2";
+}
+
+#about .picture1 {
+    grid-area: picture1;
+    width: 100%;
+}
+
+#about .content {
+    grid-area: content;
+}
+
+#about .perfect {
+    grid-area: perfect;
+}
+
+#about .picture2 {
+    grid-area: picture2;
+    width: 100%;
+}
+
+#about .content {
+    padding: 0 60px;
+}
+
+#about .content-title {
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+#about .content-subtitle {
+    font-size: 18px;
+}
+
+#about .content-list li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#about .content-list li i {
+    font-size: 13px;
+    background-color: #8cca60;
+    padding: 5px 6px;
+    border-radius: 50%;
+    margin-right: 20px;
+    color: white;
+}
+
+#about .perfect {
+    text-align: center;
+    padding: 20px 30px;
+}
+
+#about .perfect-title {
+    font-size: 24px;
+    margin: 10px 0 30px 0;
+}
+
+#about .perfect-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#about .perfect-content-card {
+    flex-basis: 30%;
+}
+
+#about .perfect-content-card p {
+    color: #628d44;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto 30px auto;
+}
+
+#about .perfect-content-card img {
+    width: 50px;
+    margin-bottom: 10px;
+}

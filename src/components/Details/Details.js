@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
-import * as dataService from '../../../services/dataService.js';
-import { AuthContext } from '../../../contexts/AuthContext.js';
-import { DataContext } from '../../../contexts/DataContext.js';
+import * as dataService from '../../services/dataService.js';
+import { AuthContext } from '../../contexts/AuthContext.js';
+import { DataContext } from '../../contexts/DataContext.js';
 import Modal from './Modal/Modal.js';
 
 import './Details.css';
@@ -14,9 +14,9 @@ export default function Details() {
   const [plant, setPlant] = useState({});
 
   const { plantId } = useParams();
-  
+
   const { user } = useContext(AuthContext);
-  const {removePlant} = useContext(DataContext)
+  const { removePlant } = useContext(DataContext)
   const [modal, setModal] = useState({ show: false });
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Details() {
   let buttons = null;
 
   if (user._id) {
-  
+
     if (isOwner) {
       buttons = (
         <div >
@@ -46,11 +46,16 @@ export default function Details() {
       )
     } else {
       buttons = (
-        <Link to="#">
-          <button className="details-btn"><i className="fa-solid fa-angles-right">
-          </i><span>VOTE</span>
-          </button>
-        </Link>
+        <>
+          <Link to="#">
+            <button className="details-btn"><i className="fa-solid fa-angles-right">
+            </i><span>VOTE</span>
+
+            </button>
+
+          </Link>
+
+        </>
       )
     }
   }
@@ -78,11 +83,11 @@ export default function Details() {
 
 
   return (
-    <section className="details">
+    <section id="details">
       {modal.show && <form className="modal-backdrop" onClick={handleDeleteFalse}>
-      <button className="btn-close" onClick={() => { navigate(`/details/${plantId}`) }}>
-                <i className="fa-solid fa-xmark"></i>
-            </button>
+        <button className="btn-close" onClick={() => { navigate(`/details/${plantId}`) }}>
+          <i className="fa-solid fa-xmark"></i>
+        </button>
       </form>}
 
       <div id="card-details">
@@ -101,14 +106,10 @@ export default function Details() {
             </button>
             <div className="plant-card-info-text">
               <div className="left">
-                <div>
+                <div className="left-wrap">
                   <h4 className="name" > {plant['plant-name']}</h4>
                   <h6 className="latin"> {plant['latin-name']}</h6>
-                  <div className="rating">
-                    <span>☆</span>
-                    <span>☆</span>
 
-                  </div>
                 </div>
                 <p className="type"><span>Plant Type:</span> {plant.type}</p>
                 <p className="exposure"><span>Exposure:</span> {plant.exposure}</p>
@@ -117,10 +118,17 @@ export default function Details() {
               </div>
               <div className="right">
                 <p className="description">
+                <div className="rating">
+                  <h3>Rating: </h3>
+                  <span>☆</span>
+                  <span>☆</span>
+                </div>
                   <span>Description: </span>
                   {plant.description}
                 </p>
+               
               </div>
+
             </div>
 
             {buttons}
