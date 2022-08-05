@@ -12,23 +12,21 @@ export async function register(email, password) {
         _id: result._id,
         email: result.email,
         token: result.accessToken
-    }
+    };
     return userData;
 }
 
 export async function login(email, password) {
     const result = await post(endpoints.login, { email, password });
-    console.log(result)
     const userData = {
         _id: result._id,
         email: result.email,
         token: result.accessToken
-    }
+    };
     return userData;
 }
 
 export async function logout() {
     get(endpoints.logout);
-
 }
 

@@ -8,7 +8,6 @@ import * as dataService from '../../services/dataService.js';
 import Modal from './Modal/Modal.js';
 import './Details.css';
 
-
 export default function Details() {
   const navigate = useNavigate();
   const [plant, setPlant] = useState({});

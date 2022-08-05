@@ -19,6 +19,6 @@ export default function Catalog() {
     }, [type])
 
     return (
-       <Dashboard plants={plantTypes} />
+       <Dashboard plantTypes={plantTypes} />
     );
 }

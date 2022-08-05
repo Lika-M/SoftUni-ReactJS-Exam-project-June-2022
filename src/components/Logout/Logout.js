@@ -12,10 +12,9 @@ export default function Logout() {
         authService.logout(user.accessToken)
             .then(() => {
                 userLogout();
-                navigate('/')
+                navigate('/', { replace: true })
             });
     }, [user.accessToken, userLogout, navigate]);
     
     return null;
-    //or spinner until the promise is resolved
 }

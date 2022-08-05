@@ -1,22 +1,17 @@
-
 .about-wrapper {
     margin: 48px auto 0 auto;
     background-color: #fff;
     box-shadow: 0px 8px 10px 3px;
     background-repeat: repeat-y;
     overflow: hidden;
-    /* border-radius: 10px; */
     padding: 20px;
     height: 100%;
     max-width: 80%;
 }
 
 .about-us-content {
-    /* width: 80%; */
     margin: 0 auto;
     background-color: #fff;
-    padding: 30px 0;
-
 }
 
 #about-us .title,
@@ -79,9 +74,8 @@
 }
 
 #about {
- 
     background-color: #fff;
-    margin: 50px auto;
+    margin: 25px auto;
 }
 
 #about .about-garden {
@@ -127,7 +121,7 @@
 #about .content-subtitle {
     font-size: 18px;
     text-align: center;
-    margin: 5px 0 10px 0;
+    margin: 5px 0 20px 0;
 }
 
 #about .content-list li {
@@ -174,4 +168,9 @@
 #about .perfect-content-card img {
     width: 50px;
     margin-bottom: 10px;
+}
+
+ul[role='list'].leaf{
+  text-align: center;
+  margin: 30px auto;
 }

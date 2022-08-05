@@ -20,8 +20,8 @@ export default function Header() {
 
     const guestNav = (
         <div className="nav-guest">
-            <NavLink to="/login">Create Account</NavLink>
-            <NavLink to="/register">Register</NavLink>
+            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/register">Create Account</NavLink>
         </div>
     );
 

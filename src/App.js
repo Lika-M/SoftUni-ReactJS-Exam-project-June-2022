@@ -1,9 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import { AuthContext } from './contexts/AuthContext.js';
+import { AuthProvider } from './contexts/AuthContext.js';
 import { DataContext } from './contexts/DataContext.js';
-import useLocaleStorage from './hooks/useLocalStorage.js';
 import * as dataService from './services/dataService.js'
 
 import Header from './components/Header/Header.js';
@@ -24,8 +23,8 @@ import './App.css';
 
 function App() {
 
-  const [user, setUser] = useLocaleStorage('userData', {});
   const [plants, setPlants] = useState({ items: [], currentType: '' });
+ 
 
   useEffect(() => {
     dataService.getAll()
@@ -34,13 +33,7 @@ function App() {
       })
   }, [])
 
-  function userLogin(userData) {
-    setUser(userData);
-  }
-
-  function userLogout() {
-    setUser({});
-  }
+ 
 
   function addPlant(newItem) {
     setPlants(state => {
@@ -73,7 +66,7 @@ function App() {
   };
 
   return (
-    <AuthContext.Provider value={{ user, userLogin, userLogout }}>
+    <AuthProvider >
       <div id="container">
         <Header />
         <main>
@@ -81,7 +74,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/catalog/:type' element={<Catalog />} />
-              <Route path='/catalog' element={<Dashboard plants={plants}/>} />
+              <Route path='/catalog' element={<Dashboard />} />
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />} />
               <Route path='/logout' element={<Logout />} />
@@ -96,7 +89,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   )
 }
 
