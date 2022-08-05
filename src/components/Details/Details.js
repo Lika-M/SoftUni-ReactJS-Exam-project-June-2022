@@ -115,7 +115,7 @@ export default function Details() {
                 <p className="soil"><span>Soil Type:</span> {plant.soil}</p>
               </div>
               <div className="right">
-                <p className="description">
+                <div className="description">
                 <div className="rating">
                   <h3>Rating: </h3>
                   <span>☆</span>
@@ -123,10 +123,8 @@ export default function Details() {
                 </div>
                   <span>Description: </span>
                   {plant.description}
-                </p>
-               
+                </div>
               </div>
-
             </div>
 
             {buttons}

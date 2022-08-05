@@ -1,4 +1,11 @@
-.about-wrapper {
+#about-wrapper {
+    width: 100%;
+    background-image: url(https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80);
+    /* background-repeat: no-repeat; */
+    background-position: center center;
+    /* background-size: cover; */
+}
+.about-container {
     margin: 48px auto 0 auto;
     background-color: #fff;
     box-shadow: 0px 8px 10px 3px;
@@ -6,7 +13,7 @@
     overflow: hidden;
     padding: 20px;
     height: 100%;
-    max-width: 80%;
+    max-width: 70%;
 }
 
 .about-us-content {
@@ -25,7 +32,6 @@
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1.1px;
-    margin: 1rem;
 }
 
 #about-us .about-description {
@@ -37,9 +43,8 @@
 #about-us .subtitle {
     max-width: 70%;
     margin: 0 auto;
-    margin-bottom: 1rem;
     padding: 0 2rem;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     line-height: 28px;
     letter-spacing: 1.02px;
@@ -47,28 +52,46 @@
 }
 
 #about-us .subtitle.second {
+    display: inline-block;
     text-align: right;
+    margin-bottom: 0;
 }
 
-#about-us .description img {
-    max-width: 450px;
+#about-us img {
+    max-width: 600px;
+    max-height: 450px;
+
 }
 
-#about-us .description {
-    max-width: 80%;
-    overflow: auto;
-    margin: 0 auto;
+
+#about-us .description-first,
+#about-us .description-second {
+    display: inline-block;
+    width: 33%;
     text-align: justify;
-    line-height: 1.3rem;
-    text-indent: 4rem;
+    line-height: 1.4rem;
+    margin: 10px 0;
+    text-indent: 30px;
+
 }
 
-#about-us .description.first img {
+/* #about-us .description-first {
+    float: right;
+}
+
+#about-us .description-second {
+    float: left;
+} */
+
+#about-us img.description-first {
+    width: 100%;
     float: left;
     padding: 6px 2rem 6px 0;
+    
 }
 
-#about-us .description.second img {
+#about-us img.description-second {
+    width: 100%;
     float: right;
     padding: 6px 0 6px 2rem;
 }
@@ -109,24 +132,24 @@
 }
 
 #about .content {
-    padding: 0 60px;
+    padding: 0 35px;
 }
 
 #about .content-title {
-    font-size: 24px;
+    font-size: 22px;
     margin: 0 10px;
     text-align: center;
 }
 
 #about .content-subtitle {
-    font-size: 18px;
+    font-size: 1rem;
     text-align: center;
     margin: 5px 0 20px 0;
 }
 
 #about .content-list li {
-    font-size: 16px;
-    margin-bottom: 5px;
+    font-size: 15px;
+    margin-bottom: 3px;
 }
 
 #about .content-list li i {
@@ -140,12 +163,12 @@
 
 #about .perfect {
     text-align: center;
-    padding: 20px 30px;
+    padding: 10px 30px;
 }
 
 #about .perfect-title {
     font-size: 24px;
-    margin: 10px 0 30px 0;
+    margin: 10px 0 20px 0;
 }
 
 #about .perfect-content {
@@ -160,17 +183,17 @@
 
 #about .perfect-content-card p {
     color: #628d44;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 20px auto;
 }
 
 #about .perfect-content-card img {
-    width: 50px;
+    width: 40px;
     margin-bottom: 10px;
 }
 
-ul[role='list'].leaf{
-  text-align: center;
-  margin: 30px auto;
+ul[role='list'].leaf {
+    text-align: center;
+    margin: 30px auto;
 }

@@ -1,12 +1,12 @@
-// import {Link} from 'react-router-dom';
-
 import './About.css'
 
 export default function About() {
 
-
   return (
-    <div className="about-wrapper">
+    <section id="about-wrapper">
+
+  
+    <div className="about-container">
       <ul role='list' className="leaf">
         {[...Array(3)].map((x, i) => <img key={i} src="https://magicofcolors.eu/wp-content/uploads/2019/07/logo-leaf-new.png" alt="leaf" />)}
       </ul>
@@ -14,27 +14,28 @@ export default function About() {
         <article className="about-us-content">
 
           <h2 className="title">Garden plant ideas </h2>
-          <p className="about-description">
+          <h5 className="about-description">
 
             Time to put our garden plant ideas into practice
-          </p>
+          </h5>
 
           <h3 className="subtitle first">Start With a Plan</h3>
-          <p className="description first">
-            <img src="https://i.pinimg.com/originals/5e/c1/9d/5ec19d0154afc0b316bbf5a98a59672a.jpg" alt="Our Mission" />
+          <img className="description-first" src="https://i.pinimg.com/originals/5e/c1/9d/5ec19d0154afc0b316bbf5a98a59672a.jpg" alt="Our Mission" />
+          <p className="description-first">
             Choosing plants is one the most important steps in any new garden design or outdoor space transformation and the
             right garden plant ideas for your space will depend on a multitude of different factors. From knowing how much
             room you have, to understanding your garden's aspect, the different soil types and the look you want to create,
             of course, there's lots of exciting stuff to consider when forming your planting scheme.
-
-            From colorful patio plants, to flowers that will still bloom on a small and shady balcony, to the perfect
-            perennials for an urban outdoor space, take a look at our practical guide on how to perfect your planting
-            scheme.
           </p>
+          <p className="description-first"> From colorful patio plants, to flowers that will still bloom on a small and shady balcony, to the perfect
+            perennials for an urban outdoor space, take a look at our practical guide on how to perfect your planting
+            scheme.</p>
           <h3 className="subtitle second">Make a Wish List</h3>
-          <p className="description second">
-            <img src="https://gardenvarietynews.files.wordpress.com/2014/02/flower-garden-linden-hill-gardens-1.jpg" alt="Our Goals" />
+          <img className="description-second" src="https://gardenvarietynews.files.wordpress.com/2014/02/flower-garden-linden-hill-gardens-1.jpg" alt="Our Goals" />
+          <p className="description-second">
             Time to put our garden plant ideas into practice.If you already have flower beds, note the successful plants and fill in the blank spots with the colors, heights, foliage, and bloom time you will need to get the desired look. This will help guide you when you are plant shopping. If you know that your garden lacks color after July 4th, you can limit your choices to later blossoming plants instead of buying more spring bloomers.
+          </p>
+          <p className="description-second">
             Be sure to make the most of what you've got already. Don't try to change a dry, rocky spot into a vegetable garden. Instead, use it for a rock garden planted with sedums and hen and chicks, which can thrive in the tough conditions.
           </p>
 
@@ -133,5 +134,6 @@ export default function About() {
         {[...Array(3)].map((x, i) => <img key={i} src="https://magicofcolors.eu/wp-content/uploads/2019/07/logo-leaf-new.png" alt="leaf" />)}
       </ul>
     </div>
+    </section>
   );
 }

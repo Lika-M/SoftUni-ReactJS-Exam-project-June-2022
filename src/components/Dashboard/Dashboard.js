@@ -2,16 +2,19 @@ import { useContext } from "react";
 import { NavLink, useParams } from "react-router-dom";
 
 import { DataContext } from "../../contexts/DataContext.js";
-
 import { PlantCard } from "../Catalog/PlantCard/PlantCard.js"
 
-export default function Dashboard({ plantTypes }) {
+export default function Dashboard({ 
+    plantTypes
+ }) {
     let { plants } = useContext(DataContext);
     let { type } = useParams();
 
-    if (plantTypes) {
-        plants = Object.assign(plantTypes, {})
-    } 
+    if (type) {
+        plants = { ...plantTypes };
+    } else {
+        type = 'Plants';
+    }
 
     return (
 
@@ -31,8 +34,9 @@ export default function Dashboard({ plantTypes }) {
                 ? <ul className="plants-list">
                     {plants.items.map(x => <PlantCard key={x._id} plant={x} />)}
                 </ul>
-                : <p style={{ fontSize: "20px" }}>{`No ${type[0].toUpperCase() + type.slice(1)} in Database`}</p>}
-
+                : <p style={{ fontSize: "20px" }}>
+                    {`No ${type[0].toUpperCase() + type.slice(1)} in Database`}
+                </p>}
         </section>
-    )
-}
+    );
+};
