@@ -121,10 +121,13 @@
 #about .content-title {
     font-size: 24px;
     margin: 0 10px;
+    text-align: center;
 }
 
 #about .content-subtitle {
     font-size: 18px;
+    text-align: center;
+    margin: 5px 0 10px 0;
 }
 
 #about .content-list li {

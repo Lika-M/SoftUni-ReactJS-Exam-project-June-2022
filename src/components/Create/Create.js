@@ -30,9 +30,9 @@ export default function Create() {
             .then(result => {
                 // console.log(result);
                 addPlant(result);
-                navigate('/')
+                navigate('/my-plants');
             })
-    }
+    };
 
 
     return (
@@ -41,7 +41,7 @@ export default function Create() {
             <div className="container">
                 <form onSubmit={onCreate} id="create-form">
                     <h1>Plant Listing</h1>
-                    <p>Please fill in this form to create an listing.</p>
+                    <p>Please fill in this form to create your own Plant List.</p>
 
                     <hr />
 
@@ -96,6 +96,7 @@ export default function Create() {
                         rows="4" cols="60" maxLength="250" placeholder="Enter Description" />
 
                     <hr />
+                    
                     <input type="submit" className="register-btn" defaultValue="Create Listing" />
                 </form>
             </div>

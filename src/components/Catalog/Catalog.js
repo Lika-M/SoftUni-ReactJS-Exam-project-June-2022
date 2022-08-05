@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { useParams} from 'react-router-dom';
 
 import * as dataService from '../../services/dataService.js';
-import './Catalog.css';
+
 import Dashboard from '../Dashboard/Dashboard.js';
+import './Catalog.css';
 
 export default function Catalog() {
 

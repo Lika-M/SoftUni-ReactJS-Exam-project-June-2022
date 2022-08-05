@@ -1,6 +1,7 @@
 #details {
   margin: 80px auto;
 }
+
 #card-details {
   text-align: center;
   vertical-align: middle;
@@ -60,8 +61,8 @@
 
 #card-details .plant-card-info h4 {
   font-size: 30px;
-  margin: 0 0 15px 0;
-  color: #31D618;
+  margin: 10px 0 15px 0;
+  /* color: #31D618; */
 }
 
 #card-details .plant-card-info-text {
@@ -70,13 +71,20 @@
   display: flex;
   gap: 20px;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
 }
 
 #card-details .left {
-  flex-basis: 30%;
+  flex-basis: 40%;
   line-height: 0.8rem;
   margin-bottom: 25px;
+  position: relative;
+}
+
+#card-details .left-wrap {
+  position: relative;
+  left: 90px;
+  width: 200px;
 }
 
 #card-details .plant-card-info .left div {
@@ -84,7 +92,7 @@
 }
 
 #card-details .right {
-  flex-basis: 70%;
+  flex-basis: 60%;
 }
 
 #card-details .plant-card-info h6,
@@ -116,14 +124,15 @@
   font-size: 12px;
   font-weight: bold;
   background-color: #fff;
-  color:#31D618;
+  color: #31D618;
   box-shadow: 1px 1px 5px 2px #8cca60;
 }
 
 #card-details .details-btn:hover {
-  background-color:#31D618;
+  background-color: #31D618;
   box-shadow: 1px 1px 5px 2px rgb(78, 76, 76);
 }
+
 #card-details .delete.details-btn:hover {
   background-color: #ffb535;
 }
@@ -131,7 +140,7 @@
 #card-details .details-btn i {
   padding-right: 10px;
   color: #31D618;
-} 
+}
 
 #card-details .details-btn span {
   color: #ffb535;
@@ -164,12 +173,11 @@
   color: #ffb535;
   font-size: 16px;
   font-weight: bold;
-  margin: 3px ;
+  margin: 3px;
 }
 
 .details {
   width: 100%;
   height: 100%;
-  
-}
 
+}

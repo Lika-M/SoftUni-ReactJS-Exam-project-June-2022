@@ -4,7 +4,6 @@ import { PlantCard } from "../Catalog/PlantCard/PlantCard.js"
 
 export default function Dashboard({plants}) {
     const type = plants.currentType ? plants.currentType : "All";
-    console.log(type);
     return (
      
         <section id="plants">
@@ -25,8 +24,5 @@ export default function Dashboard({plants}) {
                 </ul>
                 :  <p style={{fontSize: "20px"}}>{`No ${type[0].toUpperCase() + type.slice(1)} in Database`}</p>}
         </section>
-        
     )
-
-
 }

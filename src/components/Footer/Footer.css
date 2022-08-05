@@ -11,14 +11,11 @@ footer {
     
 }
 
-footer .socials {
-    display: flex;
-    align-items: center;
-   justify-content: center;
-}
 
 footer .socials ul {
-    display: flex;  
+    padding: 0;
+    display: flex; 
+    justify-content: center; 
 }
 
 footer .socials li { 

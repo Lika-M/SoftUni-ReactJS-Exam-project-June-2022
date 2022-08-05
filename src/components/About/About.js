@@ -46,9 +46,9 @@ export default function About() {
               <h2 className="content-title">
                 How do I plan my garden layout?
               </h2>
-              <p className="content-subtitle">
+              <h5 className="content-subtitle">
                 Make a Planting Strategy
-              </p>
+              </h5>
               <ul className="content-list" role="list">
                 <li>
                   <i className="fa-regular fa-bell"></i>

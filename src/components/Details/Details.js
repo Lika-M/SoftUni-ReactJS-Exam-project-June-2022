@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
-import * as dataService from '../../services/dataService.js';
 import { AuthContext } from '../../contexts/AuthContext.js';
 import { DataContext } from '../../contexts/DataContext.js';
-import Modal from './Modal/Modal.js';
+import * as dataService from '../../services/dataService.js';
 
+import Modal from './Modal/Modal.js';
 import './Details.css';
 
 
@@ -30,7 +30,6 @@ export default function Details() {
   let buttons = null;
 
   if (user._id) {
-
     if (isOwner) {
       buttons = (
         <div >
@@ -46,40 +45,40 @@ export default function Details() {
       )
     } else {
       buttons = (
-        <>
           <Link to="#">
             <button className="details-btn"><i className="fa-solid fa-angles-right">
             </i><span>VOTE</span>
-
             </button>
-
           </Link>
-
-        </>
       )
     }
-  }
+  };
 
   function onDelete(ev) {
     setModal({ show: true });
   };
 
   function handleDeleteFalse() {
-    setModal({ show: false })
-  }
+    setModal({ show: false });
+  };
 
   function handleDeleteTrue() {
     if (modal.show) {
       dataService.deleteItemById(plantId)
         .then(result => {
-          removePlant(plantId)
-          navigate('/catalog/all')
+          removePlant(plantId);
+          navigate('/catalog/all');
         });
     }
-  }
+  };
+
   function onClose() {
-    navigate(`/catalog/all`)
-  }
+    if(isOwner){
+      navigate('/my-plants');
+    } else {
+      navigate(`/catalog/all`);
+    }
+  };
 
 
   return (

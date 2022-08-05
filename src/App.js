@@ -18,6 +18,7 @@ import Register from './components/Register/Register.js';
 import Logout from './components/Logout/Logout.js';
 import About from './components/About/About.js';
 import Dashboard from './components/Dashboard/Dashboard.js';
+import MyPlants from './components/MyPlants/MyPlants.js';
 import './App.css';
 
 
@@ -46,9 +47,9 @@ function App() {
        return {
         ...state,
         items:[...state.items, newItem]
-       }
+       };
     })
-  }
+  };
 
   function updatePlants(item, plantId) {
     setPlants(state => {
@@ -57,9 +58,9 @@ function App() {
       updatedItems.push(item); 
       return {
         items: updatedItems,
-      }
+      };
     })
-  }
+  };
 
   function removePlant(plantId) {
     setPlants(state => {
@@ -67,9 +68,9 @@ function App() {
        return {
        ...state,
        items: state.items.filter(x => x !== item)
-       }
+       };
     })
-  }
+  };
 
   return (
     <AuthContext.Provider value={{ user, userLogin, userLogout }}>
@@ -88,6 +89,7 @@ function App() {
               <Route path='/edit/:plantId' element={<Edit />} />
               <Route path='/details/:plantId' element={<Details />} />
               <Route path='/about' element={<About />} />
+              <Route path='/my-plants' element ={<MyPlants/>} />
             </Routes>
           </DataContext.Provider>
 

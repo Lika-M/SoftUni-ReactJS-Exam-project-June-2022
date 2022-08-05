@@ -57,7 +57,7 @@ export default function Edit() {
       <div className="container">
         <form onSubmit={onEdit} id="edit-form">
           <h1>Plant Listing</h1>
-          <p>Please fill in this form to edit an listing.</p>
+          <p style={{color:"red"}}>Please fill in this form to edit {`${plant['plant-name']}`}.</p>
 
           <hr />
 

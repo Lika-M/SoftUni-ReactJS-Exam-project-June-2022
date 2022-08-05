@@ -1,4 +1,4 @@
-.home-card {
+.my-card {
     margin: 80px auto;
     background:url('https://images.unsplash.com/photo-1506968430777-bf7784a87f23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80');
     box-shadow: 0px 8px 20px 3px;
@@ -8,23 +8,23 @@
     padding: 20px;
     height: 100%;
     width: 850px;
-
+    position: relative;
 }
 
-.home-card>h2 {
-    font-size: 48px;
+.my-card>h2 {
+    font-size: 40px;
     font-weight: 700;
     color: #fff;
     text-transform: uppercase;
     text-align: center;
 }
 
-.home-card-item {
+.my-card-item {
     background-color: #fff;
     box-shadow: 1px 10px 10px 0px #000;
     display: flex;
     max-width: 100%;
-    margin: 60px 100px;
+    margin: 40px 100px;
     overflow: hidden;
     width: 600px auto;
     min-height: 210px;
@@ -32,7 +32,7 @@
     border-radius: 4px;
 }
 
-.home-card-info {
+.my-card-info {
     padding: 30px;
     position: relative;
     width: 100%;
@@ -40,7 +40,7 @@
     gap: 5%;
 }
 
-.home-card-info img {
+.my-card-info img {
     margin-top: -10px;
     width: 200px;
     height: 160px;
@@ -50,38 +50,40 @@
     object-fit: cover;
 }
 
-.home-card-info-text {
+.my-card-info-text {
     text-align: center;
     position: relative;
     flex-basis: 30%;
 }
 
-.home-card-info-desc {
+.my-card-info-desc {
     flex-basis: 30%;
+    margin-top: 25px;
 }
-.home-card-info-text h4,
-.home-card-info-desc h4 {
+.my-card-info-text h4,
+.my-card-info-desc h4 {
     font-size: 16px;
     font-weight: 750;
     color: green;
     margin-bottom: 10px;
 }
 
-.home-card-info-text h3 {
+.my-card-info-text h3 {
     text-align: center;
     font-size: 18px;
     color: orange;
 }
 
-.home-card-info-desc p {
+.my-card-info-desc p {
     font-size: 14px;
 }
 
-.home-card-info-text .details-button {
-    background-color: green;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+.my-card-info-text .details-button {
+    background-color: #8cca60;
+    box-shadow:  1px 10px 10px 0px  rgba(0, 0, 0, 0.5);
     color: #fff;
     font-size: 14px;
+    font-weight: bold;
     padding: 10px 30px;
     letter-spacing: 1px;
     position:relative;

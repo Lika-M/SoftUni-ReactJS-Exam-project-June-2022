@@ -12,15 +12,15 @@ export default function Header() {
     const userNav = (
         <div className="nav-user">
             <span  style={{backgroundColor: "#8cca60", color: "black"}}>Welcome, {auth}!</span>
-            <a>My Listings</a>
-            <NavLink to="/create">Create Listing</NavLink>
+            <NavLink to="/my-plants">My List</NavLink>
+            <NavLink to="/create">Add Favorite</NavLink>
             <NavLink to="/logout">Logout</NavLink>
         </div>
     );
 
     const guestNav = (
         <div className="nav-guest">
-            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/login">Create Account</NavLink>
             <NavLink to="/register">Register</NavLink>
         </div>
     );
