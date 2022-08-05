@@ -1,0 +1,63 @@
+{
+    "1":{
+        
+        "plant-name": "Jasmine",
+        "latin-name": "Philadelphus coronarius",
+        "type": "Shrubs",
+        "exposure": "Full Sun, Partial Sun",
+        "water": "Low",
+        "soil": "Chalk",
+        "description": "Prized for its incredible fragrance, award-winning Philadelphus is a compact medium-sized deciduous shrub of great beauty when in bloom. In late spring to early summer, its elegantly arching branches bear a profusion of large, highly-scented, single white flowers",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/xVtWf4U6cEI1uWMkiVJmXt0K0AMyQOGjLD579kj1.webp",
+        "rating": []
+    },
+    "2":{
+       
+        "plant-name": "Japanese maple",
+        "latin-name": "Acer palmatum",
+        "type": "Trees",
+        "exposure": "Full Sun, Partial Sun",
+        "water": "Average",
+        "soil": "Chalk",
+        "description": "Noted for its outstanding color and vigor, award-winning Acer palmatum is a medium-sized deciduous shrub with large, deeply cut, dissected leaves of great beauty. In spring, it produces small purple flowers which give way to red fruits.",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/shutterstock_639170440Optimized.webp",
+        "rating": []
+    },
+    "3":{
+       
+        "plant-name": "Bougainvillea",
+        "latin-name": "Bougainvillea glabra",
+        "type": "Climbers",
+        "exposure": "Full Sun",
+        "water": "Low",
+        "soil": "Loam",
+        "description": "Extremely showy, Bougainvillea is a free-flowering, vigorous, evergreen shrub or vine with clusters of fiery fuchsia-red, papery bracts surrounding tiny creamy-white flowers. Blooming periodically throughout the year in warm winter areas.",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/47063586_m.webp",
+        "rating": []
+    },
+    "4":{
+       
+        "plant-name": "Tulip tree",
+        "latin-name": "Liriodendron tulipifera",
+        "type": "Trees",
+        "exposure": "Full Sun",
+        "water": "Average",
+        "soil": "Clay",
+        "description": "Fast-growing, Liriodendron is an upright, spreading deciduous tree. In late spring to early summer, tulip-shaped, yellowish-green flowers, 4 cm long. Emerging burgundy, they turn green before changing to a brilliant golden yellow in fall.",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/images/Zdi5EfchZpUwalyrafW70WJ0mIEj6opjpJPv1Roc.webp",
+        "rating": []
+    },
+    "5":{
+        
+        "plant-name": "Bird of paradise",
+        "latin-name": "Strelitzia reginae",
+        "type": "Perennials",
+        "exposure": "Full Sun, Partial Sun",
+        "water": "Average",
+        "soil": "Loam",
+        "description": "Strelitzia brings a sensational tropical accent in the garden or in a sunny interior room. This evergreen perennial forms a clump of large, gray-green leaves, contrast nicely with brilliant orange and vivid blue flowers, resembling the crest on a bird's head.",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/44519658_m.webp",
+        "rating": []
+    }
+  
+}
