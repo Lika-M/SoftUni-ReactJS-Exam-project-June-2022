@@ -12,7 +12,7 @@ export default function Register() {
   const [error, setError] = useState({
     email: '',
     password: '',
-    repass: '',
+    passwords: '',
     match: ''
   });
   const [userInput, setUserInput] = useState({
@@ -22,9 +22,7 @@ export default function Register() {
   });
 
   const navigate = useNavigate();
- 
   let errorMessage = '';
-  // let passwordMatch = false;
 
   function onRegister(ev) {
     ev.preventDefault();
@@ -34,12 +32,22 @@ export default function Register() {
     const password = formData.get('password');
     const repass = formData.get('repass');
 
-    if(password !== repass){
+    if (password !== repass) {
+      errorMessage = 'Passwords don\'t match';
+      setError(
+        state => ({
+          ...state,
+          passwords: errorMessage
+        }))
+
+      setUserInput({
+        email: '',
+        password: '',
+        repass: ''
+      })
       return;
     }
 
-    // if (password === repass) passwordMatch = true;
-   
     authService.register(email, password)
       .then((userData) => {
 
@@ -49,10 +57,13 @@ export default function Register() {
       .catch(err => {
         setError(state => ({
           ...state,
-          match: err
+          match: err.message
         }))
-        //TODO notation
-        alert(err);
+        setUserInput({
+          email: '',
+          password: '',
+          repass: ''
+        })
       })
   }
 
@@ -62,6 +73,7 @@ export default function Register() {
       [ev.target.name]: ev.target.value
     }));
   };
+
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -88,17 +100,6 @@ export default function Register() {
       password: errorMessage
     }))
   }
-
-  //Need to handle server Error
-  // function validateMatch() {
-  //   if (!passwordMatch) {
-  //     errorMessage = 'passwords don\'t match'
-  //   }
-  //   setError(state => ({
-  //     ...state,
-  //     repass: errorMessage
-  //   }))
-  // }
 
   return (
     <section id="register">
@@ -141,16 +142,17 @@ export default function Register() {
               placeholder="Repeat Password"
               name="repass" required
               id="repass"
-              // value={userInput.repass}
-              // onChange={onChange}
-              // onBlur={validateMatch}
+              value={userInput.repass}
+              onChange={onChange}
             />
-            {/* {error.repass
-              ? <p style={{ color: 'red' }}>{error.repass}</p>
-              : null} */}
+            {error.passwords
+              ? <p style={{ color: 'red' }}>{error.passwords}</p>
+              : null}
           </div>
           <hr />
-
+          {error.match
+            ? <p style={{ color: 'red' }}>{error.match}</p>
+            : null}
           <input type="submit" className="register-btn" value="Register" />
         </form>
         <div className="sign-in">

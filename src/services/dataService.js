@@ -11,7 +11,6 @@ const endpoints = {
 }
 
 export async function getAll(type = '') {
-    // console.log(type);
     if (type) {
         if (type === 'All') {
             return api.get(endpoints.last);

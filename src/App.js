@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext.js';
 import { DataProvider } from './contexts/DataContext.js';
 
+import ErrorBoundary from './components/common/ErrorBoundary.js';
 import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
 import Home from './components/Home/Home.js';
@@ -22,30 +23,31 @@ import './App.css';
 function App() {
 
   return (
-    <AuthProvider >
-      <div id="container">
-        <Header />
-        <main>
-          <DataProvider >
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/catalog/:type' element={<Catalog />} />
-              <Route path='/catalog' element={<Dashboard />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/logout' element={<Logout />} />
-              <Route path='/create' element={<Create />} />
-              <Route path='/edit/:plantId' element={<Edit />} />
-              <Route path='/details/:plantId' element={<Details />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/my-plants' element ={<MyPlants/>} />
-            </Routes>
-          </DataProvider>
-
-        </main>
-        <Footer />
-      </div>
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider >
+        <div id="container">
+          <Header />
+          <main>
+            <DataProvider >
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/catalog/:type' element={<Catalog />} />
+                <Route path='/catalog' element={<Dashboard />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/logout' element={<Logout />} />
+                <Route path='/create' element={<Create />} />
+                <Route path='/edit/:plantId' element={<Edit />} />
+                <Route path='/details/:plantId' element={<Details />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/my-plants' element={<MyPlants />} />
+              </Routes>
+            </DataProvider>
+          </main>
+          <Footer />
+        </div>
+      </AuthProvider>
+    </ErrorBoundary>
   )
 }
 

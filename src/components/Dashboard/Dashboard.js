@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { NavLink, useParams } from "react-router-dom";
 
 import { DataContext } from "../../contexts/DataContext.js";
-import { PlantCard } from "../Catalog/PlantCard/PlantCard.js"
+import { PlantCard } from "./PlantCard/PlantCard.js"
 
 export default function Dashboard({ 
     plantTypes

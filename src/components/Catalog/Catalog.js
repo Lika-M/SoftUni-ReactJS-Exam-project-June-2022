@@ -9,14 +9,20 @@ import './Catalog.css';
 export default function Catalog() {
 
     const [plantTypes, setPlantTypes] = useState({ items: [], currentType: '' });
+    const [isLoading, setIsLoading] =useState(true);
     const { type } = useParams();
 
     useEffect(() => {
         dataService.getAll(type? type[0].toUpperCase() + type.slice(1) :'all')
             .then(result => {
                 setPlantTypes({ items: result, currentType: type });
+                setIsLoading(false);
             })
-    }, [type])
+    }, [type]);
+
+    if(isLoading){
+        return (<p>Loading...</p>);
+    }
 
     return (
        <Dashboard plantTypes={plantTypes} />

@@ -34,14 +34,16 @@ export default function Login() {
             .catch(err => {
                 setError(state => ({
                     ...state,
-                    match: err
+                    match: err.message
                 }))
-                //TODO notation
-                alert(err);
+                setUserInput({
+                    email: '',
+                    password: ''
+                })
+               
             })
     }
 
-    // Controlled form and Validation
     function onChange(ev) {
         setUserInput(state => ({
             ...state,
@@ -117,7 +119,9 @@ export default function Login() {
                             : null}
                     </div>
                     <hr />
-
+                    {error.match
+                            ? <p style={{ color: 'red' }}>{error.match}</p>
+                            : null}
                     <input type="submit" className="register-btn" value="Login" />
                 </form>
                 <div className="sign-in">
