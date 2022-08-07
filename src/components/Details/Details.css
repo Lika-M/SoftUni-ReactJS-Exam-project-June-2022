@@ -59,33 +59,35 @@
   z-index: 1;
 }
 
-#card-details .plant-card-info h4 {
-  font-size: 30px;
-  margin: 10px 0 15px 0;
-  /* color: #31D618; */
-}
 
 #card-details .plant-card-info-text {
   font-size: 14px;
-  margin: 0 30px;
+  margin: 20px 30px;
   display: flex;
   gap: 20px;
   justify-content: space-around;
   align-items: center;
+  line-height: 1.5;
+  text-align: justify;
 }
 
 #card-details .left {
   flex-basis: 40%;
   line-height: 0.8rem;
-  margin-bottom: 25px;
   position: relative;
 }
 
 #card-details .left-wrap {
   position: relative;
-  left: 90px;
-  width: 200px;
+  left: -132px;
+  width: 500px;
 }
+
+#card-details .plant-card-info h4 {
+  font-size: 30px;
+  /* color: #31D618; */
+}
+
 
 #card-details .plant-card-info .left div {
   text-align: center;
@@ -93,6 +95,7 @@
 
 #card-details .right {
   flex-basis: 60%;
+  position: relative;
 }
 
 #card-details .plant-card-info h6,
@@ -152,26 +155,31 @@
 }
 
 .details-btn-close {
-  float: right;
   background-color: #fff;
   border: none;
   color: #31D618;
+  position: absolute;
+  top: -10px;
+  right: -282px;
 }
 
 #card-details .rating {
   text-align: center;
   font-size: 12px;
   margin-bottom: 10px;
+  position: absolute;
+  top: 55px;
+  right:110px;
 }
 
 #card-details .rating h3 {
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 14px;
 }
 
 #card-details .rating span {
   color: #ffb535;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: bold;
   margin: 3px;
 }

@@ -11,12 +11,18 @@ import './Details.css';
 export default function Details() {
   const navigate = useNavigate();
   const [plant, setPlant] = useState({});
+  const [vote, setVote] = useState({
+    plant: 0,
+    allPlants: 0,
+    myVote: false
+  })
+
+
+  const [modal, setModal] = useState({ show: false });
 
   const { plantId } = useParams();
-
   const { user } = useContext(AuthContext);
   const { removePlant } = useContext(DataContext)
-  const [modal, setModal] = useState({ show: false });
 
   useEffect(() => {
     dataService.getItemById(plantId)
@@ -25,10 +31,63 @@ export default function Details() {
       });
   }, [plantId]);
 
+  useEffect(() => {
+    dataService.getVoteByPlantId(plantId)
+      .then(res => {
+        setVote(state => {
+          return {
+            ...state,
+            plant: res
+          }
+        })
+      })
+  }, [plantId])
+
+  useEffect(() => {
+    dataService.getMyVoteByPlantId(plantId, user._id)
+      .then(res => {
+        if (res > 0) {
+          setVote(state => {
+            return {
+              ...state,
+              myVote: true
+            }
+          })
+        }
+      })
+  }, [plantId, user._id]);
+
+  useEffect(() => {
+    dataService.getAllVotes()
+      .then(res => {
+        setVote(state => {
+          return {
+            ...state,
+            allPlants: res.length
+          }
+        })
+      });
+  }, []);
+  // console.log(vote);
+  let stars = [];
+  let starsGrey = [];
+
+  if (vote.allPlants !== 0) {
+    const rating = Number((vote.plant / vote.allPlants) * 5).toFixed(0);
+    stars = (
+      [...Array.from({ length: rating }, (v, i) => i)].map((x, i) => (<span key={i}>☆</span>))
+    );
+    starsGrey = (
+      [...Array.from({ length: 5 - rating }, (v, i) => i)].map((x, j) => (<span key={j} className="grey" style={{ color: "lightGrey" }}>☆</span>))
+    );
+  }
+
+
+
   const isOwner = user._id === plant._ownerId;
   let buttons = null;
+  if (user._id !== undefined) {
 
-  if (user._id) {
     if (isOwner) {
       buttons = (
         <div >
@@ -40,20 +99,16 @@ export default function Details() {
           <button onClick={onDelete} className=" delete details-btn">
             <i className="fa-solid fa-angles-right"></i><span>DELETE</span>
           </button>
-        </div>
-      )
-    } else {
+        </div>)
+    } else if (!isOwner && vote.myVote === false) {
       buttons = (
-          <Link to="#">
-            <button className="details-btn"><i className="fa-solid fa-angles-right">
-            </i><span>VOTE</span>
-            </button>
-          </Link>
-      )
+        <button onClick={onVote} className="details-btn"><i className="fa-solid fa-angles-right"></i>
+          <span>VOTE</span>
+        </button>)
     }
-  };
+  }
 
-  function onDelete(ev) {
+  function onDelete() {
     setModal({ show: true });
   };
 
@@ -72,12 +127,24 @@ export default function Details() {
   };
 
   function onClose() {
-    if(isOwner){
+    if (isOwner) {
       navigate('/my-plants');
     } else {
       navigate(`/catalog/all`);
     }
   };
+
+  function onVote() {
+    dataService.voteForItem({ plantId })
+      .then(res => {
+        setVote(state => {
+          return {
+            ...state,
+            vote: res
+          }
+        })
+      });
+  }
 
 
   return (
@@ -99,47 +166,52 @@ export default function Details() {
           </div>
 
           <div className="plant-card-info">
-            <button className="details-btn-close" onClick={onClose}>
-              <i style={{ fontSize: "20px" }} className="fa-solid fa-xmark"></i>
-            </button>
+            <div className="left-wrap">
+              <button className="details-btn-close" onClick={onClose}>
+                <i style={{ fontSize: "20px" }} className="fa-solid fa-xmark"></i>
+              </button>
+              <h4 className="name" > {plant['plant-name']}</h4>
+              <h6 className="latin"> {plant['latin-name']}</h6>
+
+            </div>
             <div className="plant-card-info-text">
               <div className="left">
-                <div className="left-wrap">
-                  <h4 className="name" > {plant['plant-name']}</h4>
-                  <h6 className="latin"> {plant['latin-name']}</h6>
 
-                </div>
                 <p className="type"><span>Plant Type:</span> {plant.type}</p>
                 <p className="exposure"><span>Exposure:</span> {plant.exposure}</p>
                 <p className="water"><span>Water Needs:</span> {plant.water}</p>
                 <p className="soil"><span>Soil Type:</span> {plant.soil}</p>
               </div>
+              <div className="rating">
+                <h3>Rating: {`(${vote.plant} / ${vote.allPlants})`} </h3>
+                {stars}
+                {starsGrey}
+                
+
+
+              </div >
               <div className="right">
                 <div className="description">
-                <div className="rating">
-                  <h3>Rating: </h3>
-                  <span>☆</span>
-                  <span>☆</span>
-                </div>
                   <span>Description: </span>
                   {plant.description}
                 </div>
               </div>
-            </div>
+            </div >
 
             {buttons}
 
-          </div>
+          </div >
 
-          {modal.show &&
+          {
+            modal.show &&
             <Modal
               name={plant['plant-name']}
               handleDeleteTrue={handleDeleteTrue}
               handleDeleteFalse={handleDeleteFalse}
             />
           }
-        </article>
-      </div>
-    </section>
+        </article >
+      </div >
+    </section >
   );
 }

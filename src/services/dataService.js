@@ -8,6 +8,9 @@ const endpoints = {
     create: '/data/plants',
     itemById: '/data/plants/',
     edit: '/data/plants/',
+    vote: '/data/vote',
+    voteById: (plantId) => `/data/vote?where=plantId%3D%22${plantId}%22&count`,
+    myVote: (plantId, userId) => `/data/vote?where=plantId%3D%22${plantId}%22%20and%20_ownerId%3D%22${userId}%22&count`,
 }
 
 export async function getAll(type = '') {
@@ -38,7 +41,23 @@ export async function deleteItemById(id) {
     return api.delete(endpoints.itemById + id);
 }
 
-export async function getMyItems(userId){
-    return api.get(endpoints.myItems(userId))
+export async function getMyItems(id){
+    return api.get(endpoints.myItems(id))
+}
+
+export async function voteForItem(data) {
+    return api.post(endpoints.vote, data);
+}
+
+export async function getVoteByPlantId(id){
+    return api.get(endpoints.voteById(id));
+}
+
+export async function getMyVoteByPlantId(plantId, userId){
+    return api.get(endpoints.myVote(plantId, userId));
+}
+
+export async function getAllVotes(){
+    return api.get(endpoints.vote);
 }
 
