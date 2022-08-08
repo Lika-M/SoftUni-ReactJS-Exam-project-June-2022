@@ -15,8 +15,8 @@ export default function Details() {
     plant: 0,
     allPlants: 0,
     myVote: false
-  })
-
+  });
+  console.log('vote: ', vote)
 
   const [modal, setModal] = useState({ show: false });
 
@@ -68,21 +68,22 @@ export default function Details() {
         })
       });
   }, []);
-  // console.log(vote);
   let stars = [];
   let starsGrey = [];
 
   if (vote.allPlants !== 0) {
-    const rating = Number((vote.plant / vote.allPlants) * 5).toFixed(0);
+    const rating = ((Number(vote.plant) / Number(vote.allPlants)) * 5).toFixed(0);
     stars = (
-      [...Array.from({ length: rating }, (v, i) => i)].map((x, i) => (<span key={i}>☆</span>))
+      [...Array.from({ length: rating }, (v, i) => i)].map((x, i) => (<span key={i}>☆</span>)) || 0
     );
     starsGrey = (
-      [...Array.from({ length: 5 - rating }, (v, i) => i)].map((x, j) => (<span key={j} className="grey" style={{ color: "lightGrey" }}>☆</span>))
+      [...Array.from({ length: 5 - rating }, (v, j) => j)].map((x, j) => (<span key={j} className="grey" style={{ color: "lightGrey" }}>☆</span>))
+    );
+  } else {
+    starsGrey = (
+      [...Array.from({ length: 5 }, (v, k) => k)].map((x, k) => (<span key={k} className="grey" style={{ color: "lightGrey" }}>☆</span>))
     );
   }
-
-
 
   const isOwner = user._id === plant._ownerId;
   let buttons = null;
@@ -134,18 +135,21 @@ export default function Details() {
     }
   };
 
+
   function onVote() {
     dataService.voteForItem({ plantId })
       .then(res => {
         setVote(state => {
           return {
             ...state,
-            vote: res
+            plant: state.plant + 1,
+            allPlants: state.allPlants +1,
+            myVote: true
           }
-        })
+        });
       });
-  }
 
+  }
 
   return (
     <section id="details">
@@ -154,7 +158,6 @@ export default function Details() {
           <i className="fa-solid fa-xmark"></i>
         </button>
       </form>}
-
       <div id="card-details">
         <article className="plant-card">
           <div className="plant-card-background">
@@ -164,7 +167,6 @@ export default function Details() {
                 alt={`${plant['plant-name']}`} />
             </div>
           </div>
-
           <div className="plant-card-info">
             <div className="left-wrap">
               <button className="details-btn-close" onClick={onClose}>
@@ -172,11 +174,9 @@ export default function Details() {
               </button>
               <h4 className="name" > {plant['plant-name']}</h4>
               <h6 className="latin"> {plant['latin-name']}</h6>
-
             </div>
             <div className="plant-card-info-text">
               <div className="left">
-
                 <p className="type"><span>Plant Type:</span> {plant.type}</p>
                 <p className="exposure"><span>Exposure:</span> {plant.exposure}</p>
                 <p className="water"><span>Water Needs:</span> {plant.water}</p>
@@ -186,9 +186,6 @@ export default function Details() {
                 <h3>Rating: {`(${vote.plant} / ${vote.allPlants})`} </h3>
                 {stars}
                 {starsGrey}
-                
-
-
               </div >
               <div className="right">
                 <div className="description">
@@ -197,19 +194,14 @@ export default function Details() {
                 </div>
               </div>
             </div >
-
             {buttons}
-
           </div >
-
-          {
-            modal.show &&
+          {modal.show &&
             <Modal
               name={plant['plant-name']}
               handleDeleteTrue={handleDeleteTrue}
               handleDeleteFalse={handleDeleteFalse}
-            />
-          }
+            />}
         </article >
       </div >
     </section >

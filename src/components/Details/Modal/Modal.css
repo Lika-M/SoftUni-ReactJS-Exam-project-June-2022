@@ -53,12 +53,17 @@
 .btn-close {
   position: absolute;
   top: 100px;
- right: 100px;
+  right: 100px;
   z-index: 5;
 }
+
+.btn-close:hover{
+  cursor: pointer;
+}
+
 .btn-close i {
 
   font-size: 20px;
-   color: red;
-  
+  color: red;
+
 }

@@ -6,8 +6,7 @@ import { DataContext } from '../../contexts/DataContext.js';
 
 
 export default function Create() {
-    // const { user } = useContext(AuthContext);
-    const {addPlant} = useContext(DataContext);
+    const { addPlant } = useContext(DataContext);
     const navigate = useNavigate();
 
     const onCreate = (ev) => {
@@ -25,10 +24,8 @@ export default function Create() {
 
         dataService.createItem({
             ...plant,
-            likes: []
         })
             .then(result => {
-                // console.log(result);
                 addPlant(result);
                 navigate('/my-plants');
             })
@@ -96,7 +93,7 @@ export default function Create() {
                         rows="4" cols="60" maxLength="250" placeholder="Enter Description" />
 
                     <hr />
-                    
+
                     <input type="submit" className="register-btn" defaultValue="Create Listing" />
                 </form>
             </div>

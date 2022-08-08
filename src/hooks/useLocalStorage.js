@@ -1,9 +1,8 @@
 import { useState } from "react";
 
-// useState can used with function that returns state
-const useLocaleStorage = (key, initialValue) => {
+export function useLocaleStorage (key, initialValue) {
     const [state, setState] = useState(() => {
-        // check if exist
+
         let item = localStorage.getItem(key);
         return item
             ? JSON.parse(item)
@@ -11,9 +10,7 @@ const useLocaleStorage = (key, initialValue) => {
     });
 
     function saveItem(value) {
-        // save to localStorage
         localStorage.setItem(key, JSON.stringify(value))
-        //save to state
         setState(value)
     }
 
@@ -23,4 +20,3 @@ const useLocaleStorage = (key, initialValue) => {
     ]
 }
 
-export default useLocaleStorage;

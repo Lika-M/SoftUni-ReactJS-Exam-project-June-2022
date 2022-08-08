@@ -23,11 +23,10 @@ export default function MyPlants() {
             <h2>My Plant List</h2>
             <Link to="/create" className="create">
                 <span>Add New</span>
-                {/* <img src="https://www.gardenia.net/public/Front/images/btn-plants.png" alt="flower" /> */}
             </Link>
             {myPlants.length > 0
                 ? myPlants.map(x => <PlantList key={x._id} plant={x} />)
-                : <h3 className="no-articles">No articles yet</h3>}
+                : <h3 className="no-articles">You have no articles yet</h3>}
         </section>
     );
 }

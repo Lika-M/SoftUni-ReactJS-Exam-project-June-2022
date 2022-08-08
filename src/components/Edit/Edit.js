@@ -1,13 +1,11 @@
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-
 import * as dataService from '../../services/dataService.js'
 import { DataContext } from '../../contexts/DataContext.js';
 
 export default function Edit() {
 
-  // const { user } = useContext(AuthContext);
   const { updatePlants } = useContext(DataContext)
   const [plant, setPlant] = useState({});
 
@@ -37,19 +35,16 @@ export default function Edit() {
 
     dataService.editItem({
       ...plant,
-      likes: []
     }, plantId)
       .then(plant => {
         updatePlants(plant, plantId)
         navigate(`/details/${plantId}`)
       })
-
-
   }
+
   function onCancel() {
     navigate(`/details/${plantId}`)
   }
-
 
   return (
 

@@ -1,0 +1,93 @@
+[
+    {
+        "plant-name": "Pine",
+        "latin-name": "Pinus nigra",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/images/57116785_m.webp",
+        "type": "Trees",
+        "exposure": "Full Sun",
+        "water": "Low",
+        "soil": "Sand",
+        "description": "Pinus can be small shrubs or large, evergreen trees and are easily distinguished from other conifers with their long needles, which grow in bundles of 2, 3 or 5. Native to most of the Northern Hemisphere, they are long-lived and very ornamental."
+    },
+    {
+        "plant-name": "Maidenhair Tree",
+        "latin-name": "Ginkgo biloba",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/Ginkgo%20Majestic%20ButterflyOptimized.webp",
+        "type": "Trees",
+        "exposure": "Full Sun",
+        "water": "Average",
+        "soil": "Loam",
+        "description": "Ginkgo biloba is a deciduous conifer of vase-shaped, upright habit, adorned with a canopy of fan-shaped, beautifully variegated, green and butter-yellow leaves. Reminiscent of the wings of butterflies, the variegated foliage holds its coloration."
+    },
+    {
+        "plant-name": "Thyme",
+        "latin-name": "Thymus serpyllum",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/d2e8tDFC0yR7wLOhUsMNyclbWSromMAVlhPZFenv.webp",
+        "type": "Herbs",
+        "exposure": "Full Sun",
+        "water": "Low",
+        "soil": "Sand",
+        "description": "\nCreeping Thyme includes dwarf, aromatic sub-shrubs forming a showy carpet of tiny, glossy, blue-green leaves. Blooming profusely in early to mid summer. Although the leaves are aromatic, they are rarely used in cooking. "
+    },
+    {
+        "plant-name": "Bougainvillea",
+        "latin-name": "Bougainvillea glabra",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/BiUijmIR7q0OMoAGoAXarq5W8PqH9OWn9UFGLsJ1.webp",
+        "type": "Climbers",
+        "exposure": "Full Sun, Partial Sun",
+        "water": "Average",
+        "soil": "Sand",
+        "description": "A favorite dwarf Bougainvillea variety, 'Helen Johnson' is an evergreen shrub or vine with clusters of bright pink bracts surrounding tiny white flowers. "
+    },
+    {
+    
+        "plant-name": "Erica",
+        "latin-name": "Erica & Calluna",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/images/5849450_m.webp",
+        "type": "Perennials",
+        "exposure": "Full Sun",
+        "water": "Low",
+        "soil": "Sand",
+        "description": "New description - test"
+    },
+    {
+        "plant-name": "Whitebark Pine",
+        "latin-name": "Pinus albicaulis ",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/I5866lHQIWPoyZWwwOkW6RRXhIywgd4JiGQoV0y5.webp",
+        "type": "Trees",
+        "exposure": "Full Sun",
+        "water": "Low",
+        "soil": "Sand",
+        "description": "Slow-growing, medium to tall evergreen conifer adorned with an irregular sprawling crown and spreading to ascending branches. The trunk can be straight or contorted and twisted by the wind and harsh growing conditions."
+    },
+    {
+        "plant-name": "Black-Eyed Susan",
+        "latin-name": "Rudbeckia 'Summerina Orange' ",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/shutterstock_757172941Optimized%20Optimized.webp",
+        "type": "Perennials",
+        "exposure": "Full Sun, Partial Sun",
+        "water": "Average",
+        "soil": "Clay",
+        "description": "Vigorous and fast-growing, this compact perennial boasts extra large, orange flowers, adorned with a rusty-orange inner halo surrounding a dark chocolate cone. Blooming profusely from early summer to frost, they provide weeks of eye-catching color."
+    },
+    {
+        "plant-name": "Mock Orange",
+        "latin-name": "Philadelphus 'Avalanche' ",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/62s14pzViOScOq9Ovvmqn2nrooMlwzuXfXdrW1fN.webp",
+        "type": "Shrubs",
+        "exposure": "Full Sun, Partial Sun",
+        "water": "Low",
+        "soil": "Chalk",
+        "description": "Regarded as one of the most fragrant of all Mock Oranges is a multi-stemmed deciduous shrub of great beauty when in bloom. In late spring to early summer, its pleasantly arching branches bear clusters of cup-shaped, at their tips. "
+    },
+    {
+        "plant-name": "Butterfly Bush",
+        "latin-name": "Buddleja davidii",
+        "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/buzz_magentaOptimized.webp",
+        "type": "Shrubs",
+        "exposure": "Full Sun",
+        "water": "Average",
+        "soil": "Loam",
+        "description": "Borne at the tips of current year's growth, the flower spikes are freely produced from mid summer through early fall and sometimes to first frost. Excellent for cutting and perfect for small gardens and containers."
+    }
+]

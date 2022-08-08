@@ -7,7 +7,6 @@ export function DataProvider ({
     children
 }){
     const [plants, setPlants] = useState({ items: [], currentType: '' });
- 
 
     useEffect(() => {
       dataService.getAll()
@@ -15,8 +14,6 @@ export function DataProvider ({
           setPlants({ items: result, currentType: 'All' });
         })
     }, [])
-  
-   
   
     function addPlant(newItem) {
       setPlants(state => {

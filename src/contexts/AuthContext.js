@@ -1,11 +1,9 @@
 import { createContext } from "react";
-import  useLocaleStorage  from '../hooks/useLocalStorage.js'
+import  {useLocaleStorage}  from '../hooks/useLocalStorage.js'
 
 export const AuthContext = createContext();
 
-export function AuthProvider({
-    children
-}) {
+export function AuthProvider({ children}) {
 
     const [user, setUser] = useLocaleStorage('userData', {});
 
@@ -23,3 +21,4 @@ export function AuthProvider({
         </AuthContext.Provider>
     );
 }
+

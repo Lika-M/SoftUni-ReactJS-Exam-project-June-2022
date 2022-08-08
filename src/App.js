@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext.js';
 import { DataProvider } from './contexts/DataContext.js';
+import { PrivateRoute } from './components/common/PrivateRoute.js';
 
 import ErrorBoundary from './components/common/ErrorBoundary.js';
 import Header from './components/Header/Header.js';
@@ -20,7 +21,7 @@ import MyPlants from './components/MyPlants/MyPlants.js';
 import './App.css';
 
 
-function App() {
+export default function App() {
 
   return (
     <ErrorBoundary>
@@ -35,12 +36,16 @@ function App() {
                 <Route path='/catalog' element={<Dashboard />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
-                <Route path='/logout' element={<Logout />} />
-                <Route path='/create' element={<Create />} />
-                <Route path='/edit/:plantId' element={<Edit />} />
+
+                <Route element={<PrivateRoute />}>
+                  <Route path='/logout' element={<Logout />} />
+                  <Route path='/create' element={<Create />} />
+                  <Route path='/edit/:plantId' element={<Edit />} />
+                  <Route path='/my-plants' element={<MyPlants />} />
+                </Route>
+                
                 <Route path='/details/:plantId' element={<Details />} />
                 <Route path='/about' element={<About />} />
-                <Route path='/my-plants' element={<MyPlants />} />
               </Routes>
             </DataProvider>
           </main>
@@ -51,4 +56,4 @@ function App() {
   )
 }
 
-export default App;
+
