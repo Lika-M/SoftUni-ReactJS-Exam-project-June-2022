@@ -55,7 +55,6 @@ export default function Login() {
     };
 
     function validateEmail(ev) {
-        let errorMessage = '';
 
         if (!isValidEmail(ev.target.value)) {
             errorMessage = 'Enter valid email.'

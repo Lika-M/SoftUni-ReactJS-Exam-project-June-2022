@@ -5,13 +5,14 @@ import * as dataService from '../../services/dataService.js'
 import { DataContext } from '../../contexts/DataContext.js';
 
 export default function Edit() {
+  const [plant, setPlant] = useState({});
+  const [errEdit, setErrEdit] = useState({});
 
   const { updatePlants } = useContext(DataContext)
-  const [plant, setPlant] = useState({});
-
   const { plantId } = useParams();
 
   const navigate = useNavigate();
+  let errMessage = '';
 
   useEffect(() => {
     dataService.getItemById(plantId)
@@ -26,11 +27,15 @@ export default function Edit() {
     const formData = new FormData(ev.currentTarget);
     const plant = Object.fromEntries(formData);
 
-    //validation without controlled form
     const isEmptyField = Object.values(plant).some(x => x === '');
 
     if (isEmptyField) {
-      return alert('All fields are required');
+      errMessage = 'All fields are required!';
+      setErrEdit(state => ({
+        ...state,
+        isEmptyField: errMessage
+      }));
+      return;
     }
 
     dataService.editItem({
@@ -42,9 +47,62 @@ export default function Edit() {
       })
   }
 
+  function onChange(ev) {
+    setPlant(state => ({
+      ...state,
+      [ev.target.name]: ev.target.value
+    }));
+  };
+
+  function validateMessage(ev) {
+    if (ev.target.value.length > 20) {
+      return errMessage = 'Name must be no longer than 20 symbols.';
+    } else if (ev.target.value.length < 3) {
+      return errMessage = 'Name must be at least 3 symbols.';
+    }
+  }
+
+  function validateName(ev) {
+    const message = validateMessage(ev);
+    setErrEdit(state => ({
+      ...state,
+      ['plant-name']: message
+    }));
+  }
+
+  function validateLatinName(ev) {
+    const message = validateMessage(ev);
+    setErrEdit(state => ({
+      ...state,
+      ['latin-name']: message
+    }));
+  }
+
+  function validateUrl(ev) {
+    if (ev.target.value.length < 10) {
+      errMessage = 'Enter image URL.';
+    }
+    setErrEdit(state => ({
+      ...state,
+      imgUrl: errMessage
+    }));
+  }
+
+  function validateDescription(ev) {
+    if (ev.target.value.length === 0) {
+      errMessage = 'Enter description.';
+    } else if (ev.target.value > 200) {
+      errMessage = 'Description must be no longer than 250 symbols.';
+    }
+    setErrEdit(state => ({
+      ...state,
+      description: errMessage
+    }));
+  }
   function onCancel() {
     navigate(`/details/${plantId}`)
   }
+
 
   return (
 
@@ -52,69 +110,103 @@ export default function Edit() {
       <div className="container">
         <form onSubmit={onEdit} id="edit-form">
           <h1>Plant Listing</h1>
-          <p style={{color:"red"}}>Please fill in this form to edit {`${plant['plant-name']}`}.</p>
+          <p style={{ color: "red" }}>Please fill in this form to edit {`${plant['plant-name']}`}.</p>
 
           <hr />
 
           <label htmlFor="name">Plant Name</label>
           <input type="text" id="name" placeholder="Enter Plant Name" name="plant-name"
-            defaultValue={plant["plant-name"]}
+            value={plant["plant-name"]}
+            onChange={onChange}
+            onBlur={validateName}
           />
+          {errEdit['plant-name']
+            ? <p style={{ color: 'red' }}>{errEdit["plant-name"]}</p>
+            : null}
 
           <label htmlFor="latin">Latin Name</label>
           <input type="text" id="latin" placeholder="Enter Latin Name" name="latin-name"
-            defaultValue={plant["latin-name"]}
+            value={plant["latin-name"]}
+            onChange={onChange}
+            onBlur={validateLatinName}
           />
+          {errEdit['latin-name']
+            ? <p style={{ color: 'red' }}>{errEdit["latin-name"]}</p>
+            : null}
 
           <label htmlFor="imgUrl">Plant Image</label>
           <input type="text" id="imgUrl" placeholder="Enter Plant Image" name="imgUrl"
-            defaultValue={plant.imgUrl}
+            value={plant.imgUrl}
+            onChange={onChange}
+            onBlur={validateUrl}
           />
+          {errEdit.imgUrl
+            ? <p style={{ color: 'red' }}>{errEdit.imgUrl}</p>
+            : null}
 
           <label htmlFor="type">Select Plant Type</label>
-          <select type="text" id="type" name="type" defaultValue={plant.type}>
-            <option className="label"></option>
-            <option >Trees</option>
-            <option >Shrubs</option>
-            <option >Climbers</option>
-            <option >Perennials</option>
-            <option >Herbs</option>
+          <select type="text" id="type" name="type"
+            value={plant.type}
+            onChange={onChange}
+          >
+            <option value={""} className="label"></option>
+            <option value={"Trees"} >Trees</option>
+            <option value={"shrubs"}>Shrubs</option>
+            <option value={"Shrubs"}>Climbers</option>
+            <option value={"Perennials"}>Perennials</option>
+            <option value={"Herbs"}>Herbs</option>
           </select>
 
           <label htmlFor="exposure">Select Plant Exposure</label>
-          <select type="text" id="exposure" name="exposure" defaultValue={plant.exposure}>
-            <option className="label"></option>
-            <option >Full Sun</option>
-            <option >Shade</option>
-            <option >Partial Sun</option>
-            <option >Full Sun, Partial Sun</option>
-            <option >Partial Sun, Shade</option>
+          <select type="text" id="exposure" name="exposure"
+            value={plant.exposure}
+            onChange={onChange}
+          >
+            <option value={""} className="label"></option>
+            <option value={"Full Sun"} >Full Sun</option>
+            <option value={"Shade"} >Shade</option>
+            <option value={"Partial Sun"} >Partial Sun</option>
+            <option value={"Full Sun, Partial Sun"} >Full Sun, Partial Sun</option>
+            <option value={"Partial Sun, Shade"} >Partial Sun, Shade</option>
           </select>
 
           <label htmlFor="water">Select Water Needs</label>
-          <select type="text" id="water" name="water" defaultValue={plant.water}>
-            <option className="label"></option>
-            <option>Average</option>
-            <option>Low</option>
-            <option>High</option>
+          <select type="text" id="water" name="water"
+            value={plant.water}
+            onChange={onChange}
+          >
+            <option value={""} className="label"></option>
+            <option value={"Average"} >Average</option>
+            <option value={"Low"} >Low</option>
+            <option value={"High"} >High</option>
           </select>
 
           <label htmlFor="soil">Select Soil Type</label>
-          <select type="text" id="soil" name="soil" defaultValue={plant.soil}>
-            <option className="label"></option>
-            <option>Chalk</option>
-            <option>Clay</option>
-            <option>Loam</option>
-            <option>Sand</option>
+          <select type="text" id="soil" name="soil"
+            value={plant.soil}
+            onChange={onChange}
+          >
+            <option value={""} className="label"></option>
+            <option value={"Chalk"} >Chalk</option>
+            <option value={"Clay"} >Clay</option>
+            <option value={"Loam"} >Loam</option>
+            <option value={"Sand"} >Sand</option>
           </select>
 
           <label htmlFor="description">Description</label>
           <textarea type="text" id="description" name="description"
             rows="4" cols="60" maxLength="250" placeholder="Enter Description"
-            defaultValue={plant.description}
+            value={plant.description}
+            onChange={onChange}
+            onBlur={validateDescription}
           />
-
+          {errEdit.description
+            ? <p style={{ color: 'red' }}>{errEdit.description}</p>
+            : null}
           <hr />
+          {errEdit.isEmptyField
+            ? <p style={{ color: 'red' }}>{errEdit.isEmptyField}</p>
+            : null}
           <input type="submit" className="register-btn" defaultValue="Edit Plant" />
           <button onClick={onCancel} className="register-btn" >Cancel</button>
         </form>

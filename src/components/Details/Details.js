@@ -122,7 +122,7 @@ export default function Details() {
       dataService.deleteItemById(plantId)
         .then(result => {
           removePlant(plantId);
-          navigate('/catalog/all');
+          navigate('/my-plants');
         });
     }
   };
@@ -131,7 +131,7 @@ export default function Details() {
     if (isOwner) {
       navigate('/my-plants');
     } else {
-      navigate(`/catalog/all`);
+      navigate(`/catalog`);
     }
   };
 
