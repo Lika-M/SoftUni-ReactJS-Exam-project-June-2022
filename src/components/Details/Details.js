@@ -16,8 +16,8 @@ export default function Details() {
     allPlants: 0,
     myVote: false
   });
-  console.log('vote: ', vote)
 
+  const [errorDetail, setErrorDetail] = useState('');
   const [modal, setModal] = useState({ show: false });
 
   const { plantId } = useParams();
@@ -28,7 +28,10 @@ export default function Details() {
     dataService.getItemById(plantId)
       .then(result => {
         setPlant(result);
-      });
+      })
+      .catch(err => {
+        setErrorDetail(err.message);
+      })
   }, [plantId]);
 
   useEffect(() => {
@@ -68,6 +71,7 @@ export default function Details() {
         })
       });
   }, []);
+
   let stars = [];
   let starsGrey = [];
 
@@ -87,6 +91,7 @@ export default function Details() {
 
   const isOwner = user._id === plant._ownerId;
   let buttons = null;
+
   if (user._id !== undefined) {
 
     if (isOwner) {
@@ -120,7 +125,7 @@ export default function Details() {
   function handleDeleteTrue() {
     if (modal.show) {
       dataService.deleteItemById(plantId)
-        .then(result => {
+        .then(res => {
           removePlant(plantId);
           navigate('/my-plants');
         });
@@ -135,7 +140,6 @@ export default function Details() {
     }
   };
 
-
   function onVote() {
     dataService.voteForItem({ plantId })
       .then(res => {
@@ -143,67 +147,72 @@ export default function Details() {
           return {
             ...state,
             plant: state.plant + 1,
-            allPlants: state.allPlants +1,
+            allPlants: state.allPlants + 1,
             myVote: true
           }
         });
       });
-
   }
 
-  return (
-    <section id="details">
-      {modal.show && <form className="modal-backdrop" onClick={handleDeleteFalse}>
-        <button className="btn-close" onClick={() => { navigate(`/details/${plantId}`) }}>
-          <i className="fa-solid fa-xmark"></i>
-        </button>
-      </form>}
-      <div id="card-details">
-        <article className="plant-card">
-          <div className="plant-card-background">
-            <div className="card-background-wrapper">
-              <img
-                src={plant.imgUrl}
-                alt={`${plant['plant-name']}`} />
-            </div>
-          </div>
-          <div className="plant-card-info">
-            <div className="left-wrap">
-              <button className="details-btn-close" onClick={onClose}>
-                <i style={{ fontSize: "20px" }} className="fa-solid fa-xmark"></i>
-              </button>
-              <h4 className="name" > {plant['plant-name']}</h4>
-              <h6 className="latin"> {plant['latin-name']}</h6>
-            </div>
-            <div className="plant-card-info-text">
-              <div className="left">
-                <p className="type"><span>Plant Type:</span> {plant.type}</p>
-                <p className="exposure"><span>Exposure:</span> {plant.exposure}</p>
-                <p className="water"><span>Water Needs:</span> {plant.water}</p>
-                <p className="soil"><span>Soil Type:</span> {plant.soil}</p>
+  if (errorDetail) {
+    return (<section id="details"><h1 style={{ color: "red", textAlign: "center", fontSize: "30px" }} >{errorDetail}</h1></section>);
+  } else {
+
+    return (
+      < section id="details" >
+        {modal.show &&
+          <form className="modal-backdrop" onClick={handleDeleteFalse}>
+            <button className="btn-close" onClick={() => { navigate(`/details/${plantId}`) }}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          </form>}
+        < div id="card-details" >
+          <article className="plant-card">
+            <div className="plant-card-background">
+              <div className="card-background-wrapper">
+                <img
+                  src={plant.imgUrl}
+                  alt={`${plant['plant-name']}`} />
               </div>
-              <div className="rating">
-                <h3>Rating: {`(${vote.plant} / ${vote.allPlants})`} </h3>
-                {stars}
-                {starsGrey}
-              </div >
-              <div className="right">
-                <div className="description">
-                  <span>Description: </span>
-                  {plant.description}
+            </div>
+            <div className="plant-card-info">
+              <div className="left-wrap">
+                <button className="details-btn-close" onClick={onClose}>
+                  <i style={{ fontSize: "20px" }} className="fa-solid fa-xmark"></i>
+                </button>
+                <h4 className="name" > {plant['plant-name']}</h4>
+                <h6 className="latin"> {plant['latin-name']}</h6>
+              </div>
+              <div className="plant-card-info-text">
+                <div className="left">
+                  <p className="type"><span>Plant Type:</span> {plant.type}</p>
+                  <p className="exposure"><span>Exposure:</span> {plant.exposure}</p>
+                  <p className="water"><span>Water Needs:</span> {plant.water}</p>
+                  <p className="soil"><span>Soil Type:</span> {plant.soil}</p>
                 </div>
-              </div>
+                <div className="rating">
+                  <h3>Rating: {`(${vote.plant} / ${vote.allPlants})`} </h3>
+                  {stars}
+                  {starsGrey}
+                </div >
+                <div className="right">
+                  <div className="description">
+                    <span>Description: </span>
+                    {plant.description}
+                  </div>
+                </div>
+              </div >
+              {buttons}
             </div >
-            {buttons}
-          </div >
-          {modal.show &&
-            <Modal
-              name={plant['plant-name']}
-              handleDeleteTrue={handleDeleteTrue}
-              handleDeleteFalse={handleDeleteFalse}
-            />}
-        </article >
-      </div >
-    </section >
-  );
+            {modal.show &&
+              <Modal
+                name={plant['plant-name']}
+                handleDeleteTrue={handleDeleteTrue}
+                handleDeleteFalse={handleDeleteFalse}
+              />}
+          </article >
+        </div >
+      </section >
+    );
+  }
 }

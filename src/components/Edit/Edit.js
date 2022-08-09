@@ -207,7 +207,7 @@ export default function Edit() {
           {errEdit.isEmptyField
             ? <p style={{ color: 'red' }}>{errEdit.isEmptyField}</p>
             : null}
-          <input type="submit" className="register-btn" defaultValue="Edit Plant" />
+          <input type="submit" className="register-btn" value="Edit Plant" />
           <button onClick={onCancel} className="register-btn" >Cancel</button>
         </form>
       </div>

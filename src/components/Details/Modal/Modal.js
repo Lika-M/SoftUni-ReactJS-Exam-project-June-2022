@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import './Modal.css'
 
 export default function Modal({
@@ -6,8 +5,7 @@ export default function Modal({
     handleDeleteFalse,
     handleDeleteTrue
 }) {
-
-    const navigate = useNavigate();
+   
     return (
 
         <section id="delete-modal" className="modal">

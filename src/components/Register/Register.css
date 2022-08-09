@@ -1,12 +1,14 @@
 /* Add padding to containers */
 #register,
 #login,
-#create-listing {
-    min-height: calc(100vh - 119px);
+#create,
+#edit {
+    min-height: 700px;
     background-image: url("https://images.unsplash.com/photo-1533460004989-cef01064af7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    position: relative;
 }
 
 .container {
@@ -15,6 +17,14 @@
     text-align: center;
     width: 500px;
     margin: auto;
+    position: relative;
+    top: 100px;
+}
+
+#create,
+#edit{
+    height: 1000px;
+ ;
 }
 
 .container h1 {

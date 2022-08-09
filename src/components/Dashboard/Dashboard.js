@@ -34,7 +34,7 @@ export default function Dashboard({
                 ? <ul className="plants-list">
                     {plants.items.map(x => <PlantCard key={x._id} plant={x} />)}
                 </ul>
-                : <p style={{ fontSize: "20px" }}>
+                : <p style={{ fontSize: "30px", color: "red" }}>
                     {`No ${type[0].toUpperCase() + type.slice(1)} in Database`}
                 </p>}
         </section>

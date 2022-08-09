@@ -95,7 +95,7 @@ export default function Create() {
 
     return (
 
-        <section id="create-listing">
+        <section id="create">
             <div className="container">
                 <form onSubmit={onCreate} id="create-form">
                     <h1>Plant Listing</h1>
@@ -201,7 +201,7 @@ export default function Create() {
                         ? <p style={{ color: 'red' }}>{err.isEmptyField}</p>
                         : null}
                     <input type="submit" className="register-btn"
-                        defaultValue="Create Listing"
+                        value="Create Listing"
                     />
                 </form>
             </div>
