@@ -2,11 +2,11 @@
 
 This app was created for the educational purposes of the ReactJS-Softuni Course, June 2021. It was designed as a place for garden design enthusiasts who search for and exchange knowledge. It provides personal space to registered users and reading and browsing access to guests.
 
-<img src="/images/img-1.jpg" width="300">
-<img src="/images/img-2.jpg" width="300">
-<img src="/images/img-3.jpg" width="300">
-<img src="/images/img-4.jpg" width="300">
-<img src="/images/img-5.jpg" width="300">
+<img src="/public/images/img-1.jpg" width="300">
+<img src="/public/images/img-2.jpg" width="300">
+<img src="/public/images/img-3.jpg" width="300">
+<img src="/public/images/img-4.jpg" width="300">
+<img src="/public/images/img-5.jpg" width="300">
 
 ## Public part
 
