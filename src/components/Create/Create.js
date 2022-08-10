@@ -58,7 +58,7 @@ export default function Create() {
         const message = validateMessage(ev);
         setErr(state => ({
             ...state,
-            ['plant-name']: message
+            'plant-name': message
         }));
     }
 
@@ -66,7 +66,7 @@ export default function Create() {
         const message = validateMessage(ev);
         setErr(state => ({
             ...state,
-            ['latin-name']: message
+            'latin-name': message
         }));
     }
 

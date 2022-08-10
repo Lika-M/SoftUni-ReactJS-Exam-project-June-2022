@@ -2,7 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext.js';
 import { DataProvider } from './contexts/DataContext.js';
-import { PrivateRoute } from './components/common/PrivateRoute.js';
+import { UserPrivateRoute } from './components/common/UserPrivateRoute.js';
+import { OwnerPrivateRoute } from './components/common/OwnerPrivateRoute.js';
 
 import ErrorBoundary from './components/common/ErrorBoundary.js';
 import Header from './components/Header/Header.js';
@@ -37,13 +38,16 @@ export default function App() {
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
 
-                <Route element={<PrivateRoute />}>
+                <Route element={<UserPrivateRoute />}>
                   <Route path='/logout' element={<Logout />} />
                   <Route path='/create' element={<Create />} />
-                  <Route path='/edit/:plantId' element={<Edit />} />
+                  <Route path='/edit/:plantId' element={
+                    <OwnerPrivateRoute>
+                      <Edit />
+                    </OwnerPrivateRoute>} />
                   <Route path='/my-plants' element={<MyPlants />} />
                 </Route>
-                
+
                 <Route path='/details/:plantId' element={<Details />} />
                 <Route path='/about' element={<About />} />
               </Routes>

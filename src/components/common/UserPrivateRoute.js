@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext.js";
 
-export  function PrivateRoute() {
+export  function UserPrivateRoute() {
     const { user } = useContext(AuthContext);
 
     if (!user._id) {

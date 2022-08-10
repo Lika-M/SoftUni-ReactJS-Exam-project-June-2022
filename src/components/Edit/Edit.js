@@ -66,7 +66,7 @@ export default function Edit() {
     const message = validateMessage(ev);
     setErrEdit(state => ({
       ...state,
-      ['plant-name']: message
+      'plant-name': message
     }));
   }
 
@@ -74,7 +74,7 @@ export default function Edit() {
     const message = validateMessage(ev);
     setErrEdit(state => ({
       ...state,
-      ['latin-name']: message
+      'latin-name': message
     }));
   }
 
