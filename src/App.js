@@ -41,10 +41,7 @@ export default function App() {
                 <Route element={<UserPrivateRoute />}>
                   <Route path='/logout' element={<Logout />} />
 
-                  <Route path='/create' element={
-                    <OwnerPrivateRoute>
-                      <Create />
-                    </OwnerPrivateRoute>} />
+                  <Route path='/create' element={<Create />} />
 
                   <Route path='/edit/:plantId' element={
                     <OwnerPrivateRoute>

@@ -1347,7 +1347,7 @@
                 "_createdOn": 161719429547,
             },
             "1840a313-225c-416a-817a-9954d4609f7c": {
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
                 "plant-name": "Maidenhair Tree",
                 "latin-name": "Ginkgo biloba",
                 "imgUrl": "https://www.gardenia.net/storage/app/public/uploads/images/detail/Ginkgo%20Majestic%20ButterflyOptimized.webp",
