@@ -22,7 +22,7 @@ export default function MyPlants() {
         <section className="my-card">
             <h2>My Plant List</h2>
             <Link to="/create" className="create">
-                <span>Add New</span>
+                <span>Add New Item</span>
             </Link>
             {myPlants.length > 0
                 ? myPlants.map(x => <PlantList key={x._id} plant={x} />)

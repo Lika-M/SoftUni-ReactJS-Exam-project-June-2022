@@ -6,7 +6,10 @@ export const DataContext = createContext();
 export function DataProvider ({
     children
 }){
-    const [plants, setPlants] = useState({ items: [], currentType: '' });
+    const [plants, setPlants] = useState({
+       items: [], 
+       currentType: '' 
+      });
 
     useEffect(() => {
       dataService.getAll()
@@ -30,6 +33,7 @@ export function DataProvider ({
         const updatedItems = state.items.filter(x => x !== plant);
         updatedItems.push(item); 
         return {
+          ...state,
           items: updatedItems,
         };
       })

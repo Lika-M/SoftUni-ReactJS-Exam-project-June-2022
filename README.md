@@ -33,6 +33,7 @@ This app was created for the educational purposes of the ReactJS-Softuni Course,
 4.  Edit - form to edit your item
 5.  Delete - allows you то delete your own item after confirmation
 
+
 ## Technical Description
 ### Built With:
 React.JS, JavaScript, CSS, HTML 

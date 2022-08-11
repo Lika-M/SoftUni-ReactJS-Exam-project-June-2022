@@ -5,7 +5,7 @@
     background-repeat:repeat-y;
     overflow: hidden;
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px 0 80px 0;
     height: 100%;
     width: 850px;
     position: relative;

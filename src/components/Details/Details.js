@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/AuthContext.js';
 import { DataContext } from '../../contexts/DataContext.js';
+import {useVote} from '../../hooks/useVote/useVote.js'
 import * as dataService from '../../services/dataService.js';
 
 import Modal from './Modal/Modal.js';
@@ -11,18 +12,14 @@ import './Details.css';
 export default function Details() {
   const navigate = useNavigate();
   const [plant, setPlant] = useState({});
-  const [vote, setVote] = useState({
-    plant: 0,
-    allPlants: 0,
-    myVote: false
-  });
 
   const [errorDetail, setErrorDetail] = useState('');
   const [modal, setModal] = useState({ show: false });
 
   const { plantId } = useParams();
   const { user } = useContext(AuthContext);
-  const { removePlant } = useContext(DataContext)
+  const { removePlant } = useContext(DataContext);
+  const [vote, addVote, CurrentVote] = useVote(plant, user)
 
   useEffect(() => {
     dataService.getItemById(plantId)
@@ -33,61 +30,6 @@ export default function Details() {
         setErrorDetail(err.message);
       })
   }, [plantId]);
-
-  useEffect(() => {
-    dataService.getVoteByPlantId(plantId)
-      .then(res => {
-        setVote(state => {
-          return {
-            ...state,
-            plant: res
-          }
-        })
-      })
-  }, [plantId])
-
-  useEffect(() => {
-    dataService.getMyVoteByPlantId(plantId, user._id)
-      .then(res => {
-        if (res > 0) {
-          setVote(state => {
-            return {
-              ...state,
-              myVote: true
-            }
-          })
-        }
-      })
-  }, [plantId, user._id]);
-
-  useEffect(() => {
-    dataService.getAllVotes()
-      .then(res => {
-        setVote(state => {
-          return {
-            ...state,
-            allPlants: res.length
-          }
-        })
-      });
-  }, []);
-
-  let stars = [];
-  let starsGrey = [];
-
-  if (vote.allPlants !== 0) {
-    const rating = ((Number(vote.plant) / Number(vote.allPlants)) * 5).toFixed(0);
-    stars = (
-      [...Array.from({ length: rating }, (v, i) => i)].map((x, i) => (<span key={i}>☆</span>)) || 0
-    );
-    starsGrey = (
-      [...Array.from({ length: 5 - rating }, (v, j) => j)].map((x, j) => (<span key={j} className="grey" style={{ color: "lightGrey" }}>☆</span>))
-    );
-  } else {
-    starsGrey = (
-      [...Array.from({ length: 5 }, (v, k) => k)].map((x, k) => (<span key={k} className="grey" style={{ color: "lightGrey" }}>☆</span>))
-    );
-  }
 
   const isOwner = user._id === plant._ownerId;
   let buttons = null;
@@ -143,14 +85,7 @@ export default function Details() {
   function onVote() {
     dataService.voteForItem({ plantId })
       .then(res => {
-        setVote(state => {
-          return {
-            ...state,
-            plant: state.plant + 1,
-            allPlants: state.allPlants + 1,
-            myVote: true
-          }
-        });
+        addVote();
       });
   }
 
@@ -191,9 +126,8 @@ export default function Details() {
                   <p className="soil"><span>Soil Type:</span> {plant.soil}</p>
                 </div>
                 <div className="rating">
-                  <h3>Rating: {`(${vote.plant} / ${vote.allPlants})`} </h3>
-                  {stars}
-                  {starsGrey}
+                  <CurrentVote/>
+
                 </div >
                 <div className="right">
                   <div className="description">
