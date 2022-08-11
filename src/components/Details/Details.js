@@ -3,7 +3,6 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/AuthContext.js';
 import { DataContext } from '../../contexts/DataContext.js';
-import {useVote} from '../../hooks/useVote/useVote.js'
 import * as dataService from '../../services/dataService.js';
 
 import Vote from '../common/Vote/Vote.js';
@@ -11,18 +10,21 @@ import Modal from './Modal/Modal.js';
 import './Details.css';
 
 export default function Details() {
-  const navigate = useNavigate();
-  const [plant, setPlant] = useState({});
 
+  const [plant, setPlant] = useState({});
   const [errorDetail, setErrorDetail] = useState('');
   const [modal, setModal] = useState({ show: false });
+  const [vote, setVote] = useState({
+    plant: 0,
+    allPlants: 0,
+    myVote: false
+  });
 
   const { plantId } = useParams();
   const { user } = useContext(AuthContext);
   const { removePlant } = useContext(DataContext);
-  const vote =useVote(plant)[0];
-  const addVote = useVote[1];
 
+  const navigate = useNavigate();
 
   useEffect(() => {
     dataService.getItemById(plantId)
@@ -33,6 +35,45 @@ export default function Details() {
         setErrorDetail(err.message);
       })
   }, [plantId]);
+
+
+  useEffect(() => {
+    dataService.getVoteByPlantId(plantId)
+      .then(res => {
+        setVote(state => {
+          return {
+            ...state,
+            plant: res
+          }
+        })
+      })
+  }, [plantId])
+
+  useEffect(() => {
+    dataService.getMyVoteByPlantId(plantId, user._id)
+      .then(res => {
+        if (res > 0) {
+          setVote(state => {
+            return {
+              ...state,
+              myVote: true
+            }
+          })
+        }
+      })
+  }, [plantId, user._id]);
+
+  useEffect(() => {
+    dataService.getAllVotes()
+      .then(res => {
+        setVote(state => {
+          return {
+            ...state,
+            allPlants: res.length
+          }
+        })
+      });
+  }, []);
 
   const isOwner = user._id === plant._ownerId;
   let buttons = null;
@@ -51,7 +92,7 @@ export default function Details() {
             <i className="fa-solid fa-angles-right"></i><span>DELETE</span>
           </button>
         </div>)
-    } else if (!isOwner && vote.myVote === false) {
+    } else if (!isOwner &&  vote.myVote === false) {
       buttons = (
         <button onClick={onVote} className="details-btn"><i className="fa-solid fa-angles-right"></i>
           <span>VOTE</span>
@@ -88,8 +129,16 @@ export default function Details() {
   function onVote() {
     dataService.voteForItem({ plantId })
       .then(res => {
-        addVote();
+        setVote(state => {
+          return {
+            ...state,
+            plant: state.plant + 1,
+            allPlants: state.allPlants + 1,
+            myVote: true
+          }
+        });
       });
+    // navigate(`/catalog`);
   }
 
   if (errorDetail) {
@@ -129,8 +178,8 @@ export default function Details() {
                   <p className="soil"><span>Soil Type:</span> {plant.soil}</p>
                 </div>
 
-                  <Vote plant={plant} user={user}/>
-                  
+                <Vote  plant={plant} vote={vote} />
+
                 <div className="right">
                   <div className="description">
                     <span>Description: </span>

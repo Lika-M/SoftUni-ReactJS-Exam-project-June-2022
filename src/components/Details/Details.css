@@ -1,12 +1,12 @@
 #details {
-  margin: 80px auto;
+  margin: 80px auto 100px auto;
 }
 
 #card-details {
   text-align: center;
   vertical-align: middle;
   max-width: 800px;
-  height: 480px;
+  height: 450px;
   margin: 0 auto;
 }
 
@@ -49,6 +49,7 @@
 #card-details .plant-card-info {
   display: inline-block;
   width: 680px;
+  height: 280px;
   background: white;
   box-shadow: 1px 2px 8px 2px #8cca60;
   padding: 20px;
@@ -165,7 +166,6 @@
 
 #card-details .rating {
   text-align: center;
-  font-size: 12px;
   margin-bottom: 10px;
   position: absolute;
   top: 55px;
