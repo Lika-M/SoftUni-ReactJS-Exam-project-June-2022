@@ -6,6 +6,7 @@ import { DataContext } from '../../contexts/DataContext.js';
 import {useVote} from '../../hooks/useVote/useVote.js'
 import * as dataService from '../../services/dataService.js';
 
+import Vote from '../common/Vote/Vote.js';
 import Modal from './Modal/Modal.js';
 import './Details.css';
 
@@ -19,7 +20,9 @@ export default function Details() {
   const { plantId } = useParams();
   const { user } = useContext(AuthContext);
   const { removePlant } = useContext(DataContext);
-  const [vote, addVote, CurrentVote] = useVote(plant, user)
+  const vote =useVote(plant)[0];
+  const addVote = useVote[1];
+
 
   useEffect(() => {
     dataService.getItemById(plantId)
@@ -125,10 +128,9 @@ export default function Details() {
                   <p className="water"><span>Water Needs:</span> {plant.water}</p>
                   <p className="soil"><span>Soil Type:</span> {plant.soil}</p>
                 </div>
-                <div className="rating">
-                  <CurrentVote/>
 
-                </div >
+                  <Vote plant={plant} user={user}/>
+                  
                 <div className="right">
                   <div className="description">
                     <span>Description: </span>

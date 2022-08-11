@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import './PlantList.css';
 
-export default function PlantList({ plant }) {
+import Vote from '../../common/Vote/Vote.js';
+import './MyPlant.css';
+
+export default function MyPlant({ plant }) {
 
     return (
             <article className="my-card-item">
@@ -14,8 +16,9 @@ export default function PlantList({ plant }) {
                         <p>Soil: {plant.soil} </p>
                     </div>
                     <div className="my-card-info-text">
-                        <h3>{plant['plant-name']}</h3>
-                        <h4>Type: {plant.type}</h4>
+                        <h3 className="my-card-name">{plant['plant-name']}</h3>
+                        {/* <h4>Type: {plant.type}</h4> */}
+                        <Vote plant={plant}/>
                         <Link to={`/details/${plant._id}`} className="details-button">Details</Link>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as dataService from '../../services/dataService.js';
 
-export function useVote(plant, user) {
+export function useVote(plant, user = {}) {
 
     const [vote, setVote] = useState({
         plant: 0,
@@ -59,33 +59,25 @@ export function useVote(plant, user) {
         });
     };
 
-    function CurrentVote() {
-        let stars = [];
-        let starsGrey = [];
 
-        if (vote.allPlants !== 0) {
-            const rating = ((Number(vote.plant) / Number(vote.allPlants)) * 5).toFixed(0);
-            stars = (
-                [...Array.from({ length: rating }, (v, i) => i)].map((x, i) => (<span key={i}>☆</span>)) || 0
-            );
-            starsGrey = (
-                [...Array.from({ length: 5 - rating }, (v, j) => j)].map((x, j) => (<span key={j} className="grey" style={{ color: "lightGrey" }}>☆</span>))
-            );
-        } else {
-            starsGrey = (
-                [...Array.from({ length: 5 }, (v, k) => k)].map((x, k) => (<span key={k} className="grey" style={{ color: "lightGrey" }}>☆</span>))
-            );
-        }
-        return (
-            <div className="vote">
-                <h3>Rating: {`(${vote.plant} / ${vote.allPlants})`} </h3>
-                {stars}
-                {starsGrey}
-            </div>
-        )
+    let stars = [];
+    let starsGrey = [];
+
+    if (vote.allPlants !== 0) {
+        const rating = ((Number(vote.plant) / Number(vote.allPlants)) * 5).toFixed(0);
+        stars = (
+            [...Array.from({ length: rating }, (v, i) => i)].map((x, i) => (<span key={i}>☆</span>)) || 0
+        );
+        starsGrey = (
+            [...Array.from({ length: 5 - rating }, (v, j) => j)].map((x, j) => (<span key={j} className="grey" style={{ color: "lightGrey" }}>☆</span>))
+        );
+    } else {
+        starsGrey = (
+            [...Array.from({ length: 5 }, (v, k) => k)].map((x, k) => (<span key={k} className="grey" style={{ color: "lightGrey" }}>☆</span>))
+        );
     }
 
-    return [vote, addVote, CurrentVote]
+    return [vote, addVote, stars, starsGrey]
 
 
 }

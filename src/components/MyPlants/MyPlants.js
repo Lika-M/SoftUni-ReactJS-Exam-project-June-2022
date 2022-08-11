@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import * as dataService from '../../services/dataService.js';
 import { AuthContext } from "../../contexts/AuthContext.js";
 
-import PlantList from './PlantList/PlantList.js';
+import MyPlant from './MyPlant/MyPlant.js';
 import './MyPlants.css';
 
 export default function MyPlants() {
@@ -25,7 +25,7 @@ export default function MyPlants() {
                 <span>Add New Item</span>
             </Link>
             {myPlants.length > 0
-                ? myPlants.map(x => <PlantList key={x._id} plant={x} />)
+                ? myPlants.map(x => <MyPlant key={x._id} plant={x} />)
                 : <h3 className="no-articles">You have no articles yet</h3>}
         </section>
     );

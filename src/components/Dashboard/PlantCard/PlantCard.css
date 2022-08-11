@@ -4,7 +4,7 @@
     text-align: center;
 }
 
- .plants-title {
+.plants-title {
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
@@ -14,12 +14,12 @@
     margin-bottom: 25px;
 }
 
- .action {
+.action {
     font-size: 18px;
     color: #fff;
 }
 
- .action i {
+.action i {
     text-shadow: none;
     background-color: #fff;
     font-size: 14px;
@@ -30,7 +30,7 @@
     margin-left: 12px;
 }
 
- .plants-list {
+.plants-list {
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -40,7 +40,7 @@
     gap: 2.5rem;
 }
 
- .plants-item {
+.plants-item {
     max-width: 300px;
     height: 370px;
     position: relative;
@@ -54,29 +54,42 @@
     object-fit: cover;
 }
 
- .plants-item-info {
+.plants-item-info {
     display: block;
     width: 100%;
     height: 100%;
     position: absolute;
-    bottom: -303px;
+    bottom: -280px;
     transition: bottom 300ms ease-in-out;
 }
 
- .plants-item-name {
+.plants-item-name {
     font-size: 1.4rem;
     font-weight: bold;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 55px;
     text-shadow: 1px 1px 1px black;
     background-color: #83bb5b;
     padding-bottom: 4px;
 }
 
-.plants-item-latin {
-    color: #fff;
-    margin-bottom: 12px;
-    font-style: italic;
+.plants-item .rating {
+    margin-bottom: 10px;
+}
+
+.plants-item .rating h3 {
+    /* color: #fff;
+    font-size: 14px;
+    font-style: italic; */
+    display: none;
+}
+
+.plants-item .rating span {
+    color: #ffb535;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 3px;
+    display: none;
 }
 
 .plants-item-text {
@@ -95,13 +108,13 @@
     padding: 10px 40px;
 }
 
- .details-btn:hover {
+.details-btn:hover {
     font-weight: bold;
     color: green;
     background-color: #fff;
 }
 
- .plants-item-info li a {
+.plants-item-info li a {
     font-size: 28px;
     color: #fff;
     transition: color 300ms ease-in-out;
@@ -116,5 +129,12 @@
     width: 100%;
     height: 100%;
     padding: 40px;
+}
 
+.plants-item-info:hover .rating span {
+    display: inline-block;
+}
+
+.plants-item-info:hover .plants-item-name{
+    margin-bottom: 0;
 }

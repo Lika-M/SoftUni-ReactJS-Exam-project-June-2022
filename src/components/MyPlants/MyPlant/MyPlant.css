@@ -56,6 +56,19 @@
     flex-basis: 30%;
 }
 
+.my-card-info-text .rating h3{
+color: #000;
+    font-size: 14px;
+    font-style: italic; 
+}
+
+.my-card-info-text .rating span {
+    color: #ffb535;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 3px;
+}
+
 .my-card-info-desc {
     flex-basis: 30%;
     margin-top: 25px;
@@ -68,10 +81,11 @@
     margin-bottom: 10px;
 }
 
-.my-card-info-text h3 {
+.my-card-info-text .my-card-name {
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     color: orange;
+    margin-bottom: 15px;
 }
 
 .my-card-info-desc p {
@@ -87,7 +101,7 @@
     padding: 10px 30px;
     letter-spacing: 1px;
     position:relative;
-    bottom: -50px;
+    bottom: -30px;
    
 }
 
