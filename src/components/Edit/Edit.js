@@ -6,7 +6,7 @@ import { DataContext } from '../../contexts/DataContext.js';
 
 export default function Edit() {
   const [plant, setPlant] = useState({});
-  const [errEdit, setErrEdit] = useState({});
+  const [errCreate, setErrCreate] = useState({});
 
   const { updatePlants } = useContext(DataContext)
   const { plantId } = useParams();
@@ -31,7 +31,7 @@ export default function Edit() {
 
     if (isEmptyField) {
       errMessage = 'All fields are required!';
-      setErrEdit(state => ({
+      setErrCreate(state => ({
         ...state,
         isEmptyField: errMessage
       }));
@@ -64,7 +64,7 @@ export default function Edit() {
 
   function validateName(ev) {
     const message = validateMessage(ev);
-    setErrEdit(state => ({
+    setErrCreate(state => ({
       ...state,
       'plant-name': message
     }));
@@ -72,7 +72,7 @@ export default function Edit() {
 
   function validateLatinName(ev) {
     const message = validateMessage(ev);
-    setErrEdit(state => ({
+    setErrCreate(state => ({
       ...state,
       'latin-name': message
     }));
@@ -82,7 +82,7 @@ export default function Edit() {
     if (ev.target.value.length < 10) {
       errMessage = 'Enter image URL.';
     }
-    setErrEdit(state => ({
+    setErrCreate(state => ({
       ...state,
       imgUrl: errMessage
     }));
@@ -94,7 +94,7 @@ export default function Edit() {
     } else if (ev.target.value > 200) {
       errMessage = 'Description must be no longer than 250 symbols.';
     }
-    setErrEdit(state => ({
+    setErrCreate(state => ({
       ...state,
       description: errMessage
     }));
@@ -121,8 +121,8 @@ export default function Edit() {
             onChange={onChange}
             onBlur={validateName}
           />
-          {errEdit['plant-name']
-            ? <p style={{ color: 'red' }}>{errEdit["plant-name"]}</p>
+          {errCreate['plant-name']
+            ? <p style={{ color: 'red' }}>{errCreate["plant-name"]}</p>
             : null}
 
           <label htmlFor="latin">Latin Name</label>
@@ -131,8 +131,8 @@ export default function Edit() {
             onChange={onChange}
             onBlur={validateLatinName}
           />
-          {errEdit['latin-name']
-            ? <p style={{ color: 'red' }}>{errEdit["latin-name"]}</p>
+          {errCreate['latin-name']
+            ? <p style={{ color: 'red' }}>{errCreate["latin-name"]}</p>
             : null}
 
           <label htmlFor="imgUrl">Plant Image</label>
@@ -141,8 +141,8 @@ export default function Edit() {
             onChange={onChange}
             onBlur={validateUrl}
           />
-          {errEdit.imgUrl
-            ? <p style={{ color: 'red' }}>{errEdit.imgUrl}</p>
+          {errCreate.imgUrl
+            ? <p style={{ color: 'red' }}>{errCreate.imgUrl}</p>
             : null}
 
           <label htmlFor="type">Select Plant Type</label>
@@ -150,12 +150,12 @@ export default function Edit() {
             value={plant.type}
             onChange={onChange}
           >
-            <option value={""} className="label"onChange={onChange}></option>
-            <option value={"Trees"} onChange={onChange}>Trees</option>
-            <option value={"shrubs"} onChange={onChange}>Shrubs</option>
-            <option value={"Shrubs"} onChange={onChange}>Climbers</option>
-            <option value={"Perennials"} onChange={onChange}>Perennials</option>
-            <option value={"Herbs"} onChange={onChange}>Herbs</option>
+            <option value={""} className="label"></option>
+            <option value={"Trees"} >Trees</option>
+            <option value={"shrubs"}>Shrubs</option>
+            <option value={"Shrubs"}>Climbers</option>
+            <option value={"Perennials"}>Perennials</option>
+            <option value={"Herbs"}>Herbs</option>
           </select>
 
           <label htmlFor="exposure">Select Plant Exposure</label>
@@ -163,12 +163,12 @@ export default function Edit() {
             value={plant.exposure}
             onChange={onChange}
           >
-            <option value={""} className="label" onChange={onChange}></option>
-            <option value={"Full Sun"} onChange={onChange}>Full Sun</option>
-            <option value={"Shade"} onChange={onChange}>Shade</option>
-            <option value={"Partial Sun"} onChange={onChange}>Partial Sun</option>
-            <option value={"Full Sun, Partial Sun"} onChange={onChange}>Full Sun, Partial Sun</option>
-            <option value={"Partial Sun, Shade"} onChange={onChange}>Partial Sun, Shade</option>
+            <option value={""} className="label"></option>
+            <option value={"Full Sun"}>Full Sun</option>
+            <option value={"Shade"}>Shade</option>
+            <option value={"Partial Sun"}>Partial Sun</option>
+            <option value={"Full Sun, Partial Sun"}>Full Sun, Partial Sun</option>
+            <option value={"Partial Sun, Shade"}>Partial Sun, Shade</option>
           </select>
 
           <label htmlFor="water">Select Water Needs</label>
@@ -176,10 +176,10 @@ export default function Edit() {
             value={plant.water}
             onChange={onChange}
           >
-            <option value={""} className="label" onChange={onChange}></option>
-            <option value={"Average"} onChange={onChange}>Average</option>
-            <option value={"Low"} onChange={onChange}>Low</option>
-            <option value={"High"} onChange={onChange}>High</option>
+            <option value={""} className="label"></option>
+            <option value={"Average"}>Average</option>
+            <option value={"Low"}>Low</option>
+            <option value={"High"}>High</option>
           </select>
 
           <label htmlFor="soil">Select Soil Type</label>
@@ -187,11 +187,11 @@ export default function Edit() {
             value={plant.soil}
             onChange={onChange}
           >
-            <option value={""} className="label"onChange={onChange}></option>
-            <option value={"Chalk"} onChange={onChange}>Chalk</option>
-            <option value={"Clay"} onChange={onChange}>Clay</option>
-            <option value={"Loam"} onChange={onChange}>Loam</option>
-            <option value={"Sand"} onChange={onChange}>Sand</option>
+            <option value={""} className="label"></option>
+            <option value={"Chalk"}>Chalk</option>
+            <option value={"Clay"}>Clay</option>
+            <option value={"Loam"}>Loam</option>
+            <option value={"Sand"}>Sand</option>
           </select>
 
           <label htmlFor="description">Description</label>
@@ -201,12 +201,12 @@ export default function Edit() {
             onChange={onChange}
             onBlur={validateDescription}
           />
-          {errEdit.description
-            ? <p style={{ color: 'red' }}>{errEdit.description}</p>
+          {errCreate.description
+            ? <p style={{ color: 'red' }}>{errCreate.description}</p>
             : null}
           <hr />
-          {errEdit.isEmptyField
-            ? <p style={{ color: 'red' }}>{errEdit.isEmptyField}</p>
+          {errCreate.isEmptyField
+            ? <p style={{ color: 'red' }}>{errCreate.isEmptyField}</p>
             : null}
           <input type="submit" className="register-btn" value="Edit Plant" />
           <button onClick={onCancel} className="register-btn" >Cancel</button>

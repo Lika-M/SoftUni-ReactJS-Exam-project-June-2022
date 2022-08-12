@@ -9,7 +9,7 @@ export default function Create() {
 
     const [err, setErr] = useState({});
     const [input, setInput] = useState({});
-    
+
     const { addPlant } = useContext(DataContext);
 
     const navigate = useNavigate();
@@ -141,7 +141,7 @@ export default function Create() {
                         onChange={onChange}
                     >
                         <option value={""} className="label"></option>
-                        <option value={"Trees"} >Trees</option>
+                        <option value={"Trees"}>Trees</option>
                         <option value={"shrubs"}>Shrubs</option>
                         <option value={"Shrubs"}>Climbers</option>
                         <option value={"Perennials"}>Perennials</option>
@@ -154,11 +154,11 @@ export default function Create() {
                         onChange={onChange}
                     >
                         <option value={""} className="label"></option>
-                        <option value={"Full Sun"} >Full Sun</option>
-                        <option value={"Shade"} >Shade</option>
-                        <option value={"Partial Sun"} >Partial Sun</option>
-                        <option value={"Full Sun, Partial Sun"} >Full Sun, Partial Sun</option>
-                        <option value={"Partial Sun, Shade"} >Partial Sun, Shade</option>
+                        <option value={"Full Sun"}>Full Sun</option>
+                        <option value={"Shade"}>Shade</option>
+                        <option value={"Partial Sun"}>Partial Sun</option>
+                        <option value={"Full Sun, Partial Sun"}>Full Sun, Partial Sun</option>
+                        <option value={"Partial Sun, Shade"}>Partial Sun, Shade</option>
                     </select>
 
                     <label htmlFor="water">Select Water Needs</label>
@@ -167,9 +167,9 @@ export default function Create() {
                         onChange={onChange}
                     >
                         <option value={""} className="label"></option>
-                        <option value={"Average"} >Average</option>
-                        <option value={"Low"} >Low</option>
-                        <option value={"High"} >High</option>
+                        <option value={"Average"}>Average</option>
+                        <option value={"Low"}>Low</option>
+                        <option value={"High"}>High</option>
                     </select>
 
                     <label htmlFor="soil">Select Soil Type</label>
@@ -178,10 +178,10 @@ export default function Create() {
                         onChange={onChange}
                     >
                         <option value={""} className="label"></option>
-                        <option value={"Chalk"} >Chalk</option>
-                        <option value={"Clay"} >Clay</option>
-                        <option value={"Loam"} >Loam</option>
-                        <option value={"Sand"} >Sand</option>
+                        <option value={"Chalk"}>Chalk</option>
+                        <option value={"Clay"}>Clay</option>
+                        <option value={"Loam"}>Loam</option>
+                        <option value={"Sand"}>Sand</option>
                     </select>
 
                     <label htmlFor="description">Description</label>
