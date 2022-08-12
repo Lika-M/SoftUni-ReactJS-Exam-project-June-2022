@@ -14,6 +14,7 @@ const endpoints = {
 }
 
 export async function getAll(type = '') {
+    
     if (type) {
         if (type === 'All') {
             return api.get(endpoints.last);
@@ -23,7 +24,6 @@ export async function getAll(type = '') {
     }
     return api.get(endpoints.all);
 }
-
 
 export async function getItemById(id) {
     return api.get(endpoints.itemById + id);

@@ -5,8 +5,8 @@ import * as authService from '../../services/authService.js'
 import { AuthContext } from '../../contexts/AuthContext.js';
 
 export default function Logout() {
-    const navigate = useNavigate();
     const { user, userLogout } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         authService.logout(user.accessToken)
@@ -14,7 +14,7 @@ export default function Logout() {
                 userLogout();
                 navigate('/', { replace: true })
             });
-    }, [user.accessToken, userLogout, navigate]);
+    }, [user.accessToken]);
     
     return null;
 }

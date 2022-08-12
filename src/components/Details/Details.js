@@ -23,7 +23,6 @@ export default function Details() {
   const { plantId } = useParams();
   const { user } = useContext(AuthContext);
   const { removePlant } = useContext(DataContext);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -102,11 +101,11 @@ export default function Details() {
 
   function onDelete() {
     setModal({ show: true });
-  };
+  }
 
   function handleDeleteFalse() {
     setModal({ show: false });
-  };
+  }
 
   function handleDeleteTrue() {
     if (modal.show) {
@@ -116,7 +115,7 @@ export default function Details() {
           navigate('/my-plants');
         });
     }
-  };
+  }
 
   function onClose() {
     if (isOwner) {
@@ -124,7 +123,7 @@ export default function Details() {
     } else {
       navigate(`/catalog`);
     }
-  };
+  }
 
   function onVote() {
     dataService.voteForItem({ plantId })
@@ -138,7 +137,6 @@ export default function Details() {
           }
         });
       });
-    // navigate(`/catalog`);
   }
 
   if (errorDetail) {
@@ -198,6 +196,6 @@ export default function Details() {
           </article >
         </div >
       </section >
-    );
+    )
   }
 }

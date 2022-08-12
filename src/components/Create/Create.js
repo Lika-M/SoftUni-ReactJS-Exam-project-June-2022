@@ -6,6 +6,7 @@ import { DataContext } from '../../contexts/DataContext.js';
 
 
 export default function Create() {
+
     const [err, setErr] = useState({});
     const [input, setInput] = useState({});
     
@@ -37,14 +38,14 @@ export default function Create() {
             addPlant(result);
             navigate('/my-plants');
         })
-    };
+    }
 
     function onChange(ev) {
         setInput(state => ({
             ...state,
             [ev.target.name]: ev.target.value
         }));
-    };
+    }
 
     function validateMessage(ev) {
         if (ev.target.value.length > 20) {
@@ -92,9 +93,7 @@ export default function Create() {
         }));
     }
 
-
     return (
-
         <section id="create">
             <div className="container">
                 <form onSubmit={onCreate} id="create-form">

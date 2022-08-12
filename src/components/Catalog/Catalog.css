@@ -14,7 +14,6 @@
   justify-content: center;
   background: transparent;
   padding: 15px 15px;
-
 }
 
 .plants-navbar-list li {
@@ -27,9 +26,7 @@
   text-align: center;
   display: block;
   padding: 5px 15px;
-
   text-decoration: none;
-
   background: green;
   color: rgb(255, 255, 255);
 }

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import { useState, useEffect, useContext } from 'react';
 
 import { AuthContext } from '../../../contexts/AuthContext.js';
@@ -55,8 +54,8 @@ export function PlantCard({plant}) {
                 })
             });
     }, []);
-    return (
 
+    return (
         <li className="plants-item">
             <img src={plant.imgUrl} alt={`${plant['plant-name']}`} />
             <div className="plants-item-info">

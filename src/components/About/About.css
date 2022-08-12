@@ -1,10 +1,9 @@
 #about-wrapper {
     width: 100%;
     background-image: url(https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80);
-    /* background-repeat: no-repeat; */
     background-position: center center;
-    /* background-size: cover; */
 }
+
 .about-container {
     margin: 48px auto 0 auto;
     background-color: #fff;
@@ -60,9 +59,7 @@
 #about-us img {
     max-width: 600px;
     max-height: 450px;
-
 }
-
 
 #about-us .description-first,
 #about-us .description-second {
@@ -72,16 +69,7 @@
     line-height: 1.4rem;
     margin: 10px 0;
     text-indent: 30px;
-
 }
-
-/* #about-us .description-first {
-    float: right;
-}
-
-#about-us .description-second {
-    float: left;
-} */
 
 #about-us img.description-first {
     width: 100%;

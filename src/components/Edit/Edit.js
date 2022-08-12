@@ -51,8 +51,8 @@ export default function Edit() {
     setPlant(state => ({
       ...state,
       [ev.target.name]: ev.target.value
-    }));
-  };
+    }))
+  }
 
   function validateMessage(ev) {
     if (ev.target.value.length > 20) {
@@ -100,17 +100,18 @@ export default function Edit() {
     }));
   }
   function onCancel() {
-    navigate(`/details/${plantId}`)
+    navigate(`/details/${plantId}`);
   }
 
-
   return (
-
     <section id="edit">
       <div className="container">
         <form onSubmit={onEdit} id="edit-form">
           <h1>Plant Listing</h1>
-          <p style={{ color: "red" }}>Please fill in this form to edit {`${plant['plant-name']}`}.</p>
+          <p>
+            Please fill in this form to edit 
+            <p style={{ color: "red", fontSize: "20px"}}>{`${plant['plant-name']}`}</p>
+            </p>
 
           <hr />
 
@@ -149,12 +150,12 @@ export default function Edit() {
             value={plant.type}
             onChange={onChange}
           >
-            <option value={""} className="label"></option>
-            <option value={"Trees"} >Trees</option>
-            <option value={"shrubs"}>Shrubs</option>
-            <option value={"Shrubs"}>Climbers</option>
-            <option value={"Perennials"}>Perennials</option>
-            <option value={"Herbs"}>Herbs</option>
+            <option value={""} className="label"onChange={onChange}></option>
+            <option value={"Trees"} onChange={onChange}>Trees</option>
+            <option value={"shrubs"} onChange={onChange}>Shrubs</option>
+            <option value={"Shrubs"} onChange={onChange}>Climbers</option>
+            <option value={"Perennials"} onChange={onChange}>Perennials</option>
+            <option value={"Herbs"} onChange={onChange}>Herbs</option>
           </select>
 
           <label htmlFor="exposure">Select Plant Exposure</label>
@@ -162,12 +163,12 @@ export default function Edit() {
             value={plant.exposure}
             onChange={onChange}
           >
-            <option value={""} className="label"></option>
-            <option value={"Full Sun"} >Full Sun</option>
-            <option value={"Shade"} >Shade</option>
-            <option value={"Partial Sun"} >Partial Sun</option>
-            <option value={"Full Sun, Partial Sun"} >Full Sun, Partial Sun</option>
-            <option value={"Partial Sun, Shade"} >Partial Sun, Shade</option>
+            <option value={""} className="label" onChange={onChange}></option>
+            <option value={"Full Sun"} onChange={onChange}>Full Sun</option>
+            <option value={"Shade"} onChange={onChange}>Shade</option>
+            <option value={"Partial Sun"} onChange={onChange}>Partial Sun</option>
+            <option value={"Full Sun, Partial Sun"} onChange={onChange}>Full Sun, Partial Sun</option>
+            <option value={"Partial Sun, Shade"} onChange={onChange}>Partial Sun, Shade</option>
           </select>
 
           <label htmlFor="water">Select Water Needs</label>
@@ -175,10 +176,10 @@ export default function Edit() {
             value={plant.water}
             onChange={onChange}
           >
-            <option value={""} className="label"></option>
-            <option value={"Average"} >Average</option>
-            <option value={"Low"} >Low</option>
-            <option value={"High"} >High</option>
+            <option value={""} className="label" onChange={onChange}></option>
+            <option value={"Average"} onChange={onChange}>Average</option>
+            <option value={"Low"} onChange={onChange}>Low</option>
+            <option value={"High"} onChange={onChange}>High</option>
           </select>
 
           <label htmlFor="soil">Select Soil Type</label>
@@ -186,11 +187,11 @@ export default function Edit() {
             value={plant.soil}
             onChange={onChange}
           >
-            <option value={""} className="label"></option>
-            <option value={"Chalk"} >Chalk</option>
-            <option value={"Clay"} >Clay</option>
-            <option value={"Loam"} >Loam</option>
-            <option value={"Sand"} >Sand</option>
+            <option value={""} className="label"onChange={onChange}></option>
+            <option value={"Chalk"} onChange={onChange}>Chalk</option>
+            <option value={"Clay"} onChange={onChange}>Clay</option>
+            <option value={"Loam"} onChange={onChange}>Loam</option>
+            <option value={"Sand"} onChange={onChange}>Sand</option>
           </select>
 
           <label htmlFor="description">Description</label>
@@ -212,5 +213,5 @@ export default function Edit() {
         </form>
       </div>
     </section>
-  );
+  )
 }

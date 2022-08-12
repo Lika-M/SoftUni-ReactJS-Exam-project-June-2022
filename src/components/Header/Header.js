@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext.js';
+
 import './Header.css'
 
 export default function Header() {
@@ -34,7 +35,6 @@ export default function Header() {
                 {user.email !== undefined
                     ? userNav
                     : guestNav}
-
             </nav>
         </header>
     );

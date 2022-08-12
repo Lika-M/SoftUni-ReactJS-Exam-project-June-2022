@@ -22,7 +22,7 @@ export default function Catalog() {
 
     if(isLoading){
         return (<p>Loading...</p>);
-    }
+    };
 
     return (
        <Dashboard plantTypes={plantTypes} />

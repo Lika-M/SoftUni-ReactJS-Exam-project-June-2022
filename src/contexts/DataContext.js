@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect} from "react";
+
 import * as dataService from '../services/dataService.js'
 
 export const DataContext = createContext();
@@ -37,7 +38,7 @@ export function DataProvider ({
           items: updatedItems,
         };
       })
-    };
+    }
   
     function removePlant(plantId) {
       setPlants(state => {
@@ -47,9 +48,9 @@ export function DataProvider ({
          items: state.items.filter(x => x !== item)
          };
       })
-    };
-    return (
+    }
 
+    return (
         <DataContext.Provider value={{ plants, addPlant, updatePlants,removePlant }}>
             {children}
         </DataContext.Provider>

@@ -8,6 +8,7 @@ import { AuthContext } from '../../contexts/AuthContext.js';
 import './Register.css';
 
 export default function Register() {
+
   const { userLogin } = useContext(AuthContext);
   const [error, setError] = useState({
     email: '',
@@ -15,6 +16,7 @@ export default function Register() {
     passwords: '',
     match: ''
   });
+
   const [userInput, setUserInput] = useState({
     email: '',
     password: '',
@@ -71,9 +73,8 @@ export default function Register() {
     setUserInput(state => ({
       ...state,
       [ev.target.name]: ev.target.value
-    }));
-  };
-
+    }))
+  }
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -81,7 +82,7 @@ export default function Register() {
 
   function validateEmail(ev) {
     if (!isValidEmail(ev.target.value)) {
-      errorMessage = 'Enter valid email.'
+      errorMessage = 'Enter valid email.';
     }
     setError(state => ({
       ...state,
@@ -91,9 +92,9 @@ export default function Register() {
 
   function validatePassword(ev) {
     if (ev.target.value.length > 15) {
-      errorMessage = 'Password must be no longer than 15 symbols.'
+      errorMessage = 'Password must be no longer than 15 symbols.';
     } else if (ev.target.value.length < 5) {
-      errorMessage = 'Password must be at least 5 symbols.'
+      errorMessage = 'Password must be at least 5 symbols.';
     }
     setError(state => ({
       ...state,
@@ -162,5 +163,5 @@ export default function Register() {
         </div>
       </div>
     </section>
-  );
+  )
 }

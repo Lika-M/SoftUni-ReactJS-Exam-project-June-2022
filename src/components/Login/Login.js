@@ -4,7 +4,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import * as authService from '../../services/authService.js'
 import { AuthContext } from '../../contexts/AuthContext.js';
 
-
 export default function Login() {
     const { userLogin } = useContext(AuthContext);
     const [error, setError] = useState({
@@ -16,6 +15,7 @@ export default function Login() {
         email: '',
         password: ''
     });
+
     let errorMessage = '';
     const navigate = useNavigate();
 
@@ -48,14 +48,13 @@ export default function Login() {
             ...state,
             [ev.target.name]: ev.target.value
         }));
-    };
+    }
 
     function isValidEmail(email) {
         return /\S+@\S+\.\S+/.test(email);
-    };
+    }
 
     function validateEmail(ev) {
-
         if (!isValidEmail(ev.target.value)) {
             errorMessage = 'Enter valid email.'
         }
@@ -63,7 +62,7 @@ export default function Login() {
             ...state,
             email: errorMessage
         }));
-    };
+    }
 
     function validatePassword(ev) {
         if (ev.target.value.length > 15) {
@@ -71,15 +70,13 @@ export default function Login() {
         } else if (ev.target.value.length < 5) {
             errorMessage = 'Password must be at least 5 symbols.'
         }
-
         setError(state => ({
             ...state,
             password: errorMessage
         }));
-    };
+    }
 
     return (
-
         <section id="login">
             <div className="container">
                 <form id="login-form" onSubmit={onLogin} method="post">
@@ -129,5 +126,5 @@ export default function Login() {
                 </div>
             </div>
         </section>
-    );
+    )
 } 

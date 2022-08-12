@@ -73,6 +73,7 @@ color: #000;
     flex-basis: 30%;
     margin-top: 25px;
 }
+
 .my-card-info-text h4,
 .my-card-info-desc h4 {
     font-size: 16px;
@@ -102,6 +103,5 @@ color: #000;
     letter-spacing: 1px;
     position:relative;
     bottom: -30px;
-   
 }
 

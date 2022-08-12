@@ -4,7 +4,6 @@
 #hero .overlay {
     text-align: center;
     height: calc(100vh - 55px);
-    /* height: 100vh; */
     background-image: url("https://i.pinimg.com/originals/e2/c2/e4/e2c2e45b68695f9fd72c1d98e63a52b2.jpg");
     background-repeat: no-repeat;
     background-position: center center;
@@ -41,9 +40,7 @@
 }
 .hero-hashtag h2 {
     margin: 0 auto;
-    /* max-width: 70%; */
     padding: 5px;
-    /* font-style: italic; */
     font-weight: lighter;
     font-size: 1.5rem;
     color: #8cca60;
@@ -69,7 +66,6 @@
 
 .site-content h2{
     width: 70%;
-   
     margin: 100px auto 0 auto;
 }
 

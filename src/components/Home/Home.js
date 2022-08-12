@@ -1,12 +1,7 @@
-// import { useContext } from 'react';
-// import { DataContext } from '../../contexts/DataContext.js';
-// import { PlantCard } from '../Catalog/PlantCard/PlantCard.js';
-// import PlantList from './PlantList/PlantList.js';
-import './Home.css';
 import { Link } from 'react-router-dom';
+import './Home.css';
 
 export default function Home() {
-    
     
     return (
         <>
@@ -18,7 +13,6 @@ export default function Home() {
                       {[...Array(8)].map((x, i )=>(<h2 className="hero-hashtag" key={i}>#GreenDesign</h2>))}
                     </div>
                 </div>
-
             </section>
             <section className="site-content">
                 <h1>Create the garden you’ve always wanted</h1>
@@ -44,7 +38,5 @@ export default function Home() {
                 </h3>
                 <h3> It's what all these lovely customers did!</h3>
             </section>
-          
-
-        </>);
+        </>)
 }

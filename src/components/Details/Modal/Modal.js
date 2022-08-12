@@ -7,11 +7,9 @@ export default function Modal({
 }) {
    
     return (
-
         <section id="delete-modal" className="modal">
-         
             <div className="container">
-                <h1> Do you really want to delete <span style={{ color: 'orange' }}> {name} </span> ?</h1>
+                <h1> Do you really want to delete <span style={{ color: 'orange' }}> {name} </span>?</h1>
                 <p>This process cannot be undone.</p>
 
                 <div className="clear-buttons">
@@ -19,8 +17,7 @@ export default function Modal({
                     <button onClick={handleDeleteTrue} type="button" className="delete-btn">Delete</button>
                 </div>
             </div>
-
         </section>
 
-    );
+    )
 }

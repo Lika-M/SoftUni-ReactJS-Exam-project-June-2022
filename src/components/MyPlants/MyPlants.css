@@ -9,9 +9,11 @@
     font-weight: bold;
     box-shadow: 1px 10px 10px 0px #000;
 }
+
 .my-card .create span{
     color:orange;
 }
+
 .my-card .create:hover {
     background-color: #8cca60;
 }

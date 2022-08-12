@@ -8,6 +8,7 @@ import MyPlant from './MyPlant/MyPlant.js';
 import './MyPlants.css';
 
 export default function MyPlants() {
+    
     const { user } = useContext(AuthContext);
     const [myPlants, setMyPlants] = useState([]);
 

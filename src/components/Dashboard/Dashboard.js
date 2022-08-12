@@ -2,11 +2,11 @@ import { useContext } from "react";
 import { NavLink, useParams } from "react-router-dom";
 
 import { DataContext } from "../../contexts/DataContext.js";
+
 import { PlantCard } from "./PlantCard/PlantCard.js"
 
-export default function Dashboard({ 
-    plantTypes
- }) {
+export default function Dashboard({plantTypes}) {
+    
     let { plants } = useContext(DataContext);
     let { type } = useParams();
 
@@ -17,7 +17,6 @@ export default function Dashboard({
     }
 
     return (
-
         <section id="plants">
             <nav className="plants-navbar">
                 <ul className="plants-navbar-list">
@@ -39,4 +38,4 @@ export default function Dashboard({
                 </p>}
         </section>
     );
-};
+}
