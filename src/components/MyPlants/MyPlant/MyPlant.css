@@ -9,6 +9,7 @@
     height: 100%;
     width: 850px;
     position: relative;
+    text-align: center;
 }
 
 .my-card>h2 {
@@ -105,3 +106,8 @@ color: #000;
     bottom: -30px;
 }
 
+.my-card .no-articles{
+    text-align: center;
+    margin: 50px 0;
+    color: #fff;
+}

@@ -4,7 +4,7 @@
     margin: 0 auto;
     position: absolute;
     bottom: 30px;
-    right: 300px;
+    right: 313px;
     font-size: 16px;
     font-weight: bold;
     box-shadow: 1px 10px 10px 0px #000;
@@ -21,6 +21,7 @@
 .my-card .create:hover span {
     color: #fff;
 }
+
 
 
 
