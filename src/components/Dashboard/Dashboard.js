@@ -16,6 +16,10 @@ export default function Dashboard({plantTypes}) {
         type = 'Plants';
     }
 
+    if(type === 'all'){
+        type = 'Plants';
+    }
+
     return (
         <section id="plants">
             <nav className="plants-navbar">
