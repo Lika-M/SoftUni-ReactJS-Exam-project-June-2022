@@ -8,7 +8,16 @@ import { DataContext } from '../../contexts/DataContext.js';
 export default function Create() {
 
     const [err, setErr] = useState({});
-    const [input, setInput] = useState({});
+    const [input, setInput] = useState({
+        'plant-name': '',
+        'latin-name': '',
+        imgUrl: '',
+        type: '',
+        exposure: '',
+        water: '',
+        soil: '',
+        description: ''
+    });
 
     const { addPlant } = useContext(DataContext);
 
