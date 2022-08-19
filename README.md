@@ -2,6 +2,8 @@
 
 This app was created for the educational purposes of the ReactJS-Softuni Course, June 2021. It was designed as a place for garden design enthusiasts who search for and exchange knowledge. It provides personal space to registered users and reading and browsing access to guests.
 
+[View Live](https://home-garden-experts.web.app/)
+
 <img src="/public/images/img-1.jpg" width="300">
 <img src="/public/images/img-2.jpg" width="300">
 <img src="/public/images/img-3.jpg" width="300">
@@ -38,7 +40,7 @@ This app was created for the educational purposes of the ReactJS-Softuni Course,
 ### Built With:
 React.JS, JavaScript, CSS, HTML 
 ### Database storage:
-SoftUni Practice Server
+[SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
 
 
 ## Getting Started with Create React App

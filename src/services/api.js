@@ -1,4 +1,4 @@
-const host = 'http://localhost:3030';
+const host = 'https://softuni-exam-project-app.herokuapp.com';
 
 async function request(url, options) {
     try {
@@ -30,8 +30,8 @@ function createOptions(method = 'GET', data) {
         options.body = JSON.stringify(data);
     }
     const userData = JSON.parse(localStorage.getItem('userData'));
-    
-    if (userData.token ) {
+
+    if (userData.token) {
         options.headers['X-Authorization'] = userData.token;
     }
     return options;
