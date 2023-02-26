@@ -41,8 +41,8 @@ export default function Edit() {
     dataService.editItem({
       ...plant,
     }, plantId)
-      .then(plant => {
-        updatePlants(plant, plantId)
+      .then(res => {
+        updatePlants(res, plantId)
         navigate(`/details/${plantId}`)
       })
   }
@@ -66,7 +66,7 @@ export default function Edit() {
     const message = validateMessage(ev);
     setErrCreate(state => ({
       ...state,
-      'plant-name': message
+      name: message
     }));
   }
 
@@ -74,7 +74,7 @@ export default function Edit() {
     const message = validateMessage(ev);
     setErrCreate(state => ({
       ...state,
-      'latin-name': message
+      latin: message
     }));
   }
 
@@ -109,30 +109,30 @@ export default function Edit() {
         <form onSubmit={onEdit} id="edit-form">
           <h1>Plant Listing</h1>
           <p>
-            Please fill in this form to edit 
-            <p style={{ color: "red", fontSize: "20px"}}>{`${plant['plant-name']}`}</p>
-            </p>
+            Edit
+            <span style={{ color: "red", fontSize: "20px" }}> {`${plant.name}`}</span>
+          </p>
 
           <hr />
 
           <label htmlFor="name">Plant Name</label>
-          <input type="text" id="name" placeholder="Enter Plant Name" name="plant-name"
-            value={plant["plant-name"]}
+          <input type="text" id="name" placeholder="Enter Plant Name" name="name"
+            value={plant.name}
             onChange={onChange}
             onBlur={validateName}
           />
-          {errCreate['plant-name']
-            ? <p style={{ color: 'red' }}>{errCreate["plant-name"]}</p>
+          {errCreate.name
+            ? <p style={{ color: 'red' }}>{errCreate.name}</p>
             : null}
 
           <label htmlFor="latin">Latin Name</label>
-          <input type="text" id="latin" placeholder="Enter Latin Name" name="latin-name"
-            value={plant["latin-name"]}
+          <input type="text" id="latin" placeholder="Enter Latin Name" name="latin"
+            value={plant.latin}
             onChange={onChange}
             onBlur={validateLatinName}
           />
-          {errCreate['latin-name']
-            ? <p style={{ color: 'red' }}>{errCreate["latin-name"]}</p>
+          {errCreate.latin
+            ? <p style={{ color: 'red' }}>{errCreate.latin}</p>
             : null}
 
           <label htmlFor="imgUrl">Plant Image</label>
@@ -152,8 +152,8 @@ export default function Edit() {
           >
             <option value={""} className="label"></option>
             <option value={"Trees"} >Trees</option>
-            <option value={"shrubs"}>Shrubs</option>
-            <option value={"Shrubs"}>Climbers</option>
+            <option value={"Shrubs"}>Shrubs</option>
+            <option value={"Climbers"}>Climbers</option>
             <option value={"Perennials"}>Perennials</option>
             <option value={"Herbs"}>Herbs</option>
           </select>

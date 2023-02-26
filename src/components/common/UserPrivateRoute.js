@@ -6,7 +6,7 @@ import { AuthContext } from "../../contexts/AuthContext.js";
 export  function UserPrivateRoute() {
     
     const { user } = useContext(AuthContext);
-
+    
     if (!user._id) {
         return <Navigate to={'/login'} replace />
     }

@@ -8,11 +8,10 @@ import './Header.css'
 export default function Header() {
 
     const { user } = useContext(AuthContext);
-    const auth = user.email?.split('@')[0];
 
     const userNav = (
         <div className="nav-user">
-            <span  style={{backgroundColor: "#8cca60", color: "black"}}>Welcome, {auth}!</span>
+            <span  style={{backgroundColor: "#8cca60", color: "black"}}>Welcome, {user.username}!</span>
             <NavLink to="/my-plants">My List</NavLink>
             <NavLink to="/create">Add Favorite</NavLink>
             <NavLink to="/logout">Logout</NavLink>
@@ -32,7 +31,7 @@ export default function Header() {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/catalog">Catalog</NavLink>
-                {user.email !== undefined
+                {user.username !== undefined
                     ? userNav
                     : guestNav}
             </nav>

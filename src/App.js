@@ -47,7 +47,6 @@ export default function App() {
                     <OwnerPrivateRoute>
                       <Edit />
                     </OwnerPrivateRoute>} />
-                    
                   <Route path='/my-plants' element={<MyPlants />} />
                 </Route>
 

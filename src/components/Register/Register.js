@@ -11,6 +11,7 @@ export default function Register() {
 
   const { userLogin } = useContext(AuthContext);
   const [error, setError] = useState({
+    username: '',
     email: '',
     password: '',
     passwords: '',
@@ -18,6 +19,7 @@ export default function Register() {
   });
 
   const [userInput, setUserInput] = useState({
+    username: '',
     email: '',
     password: '',
     repass: ''
@@ -30,6 +32,7 @@ export default function Register() {
     ev.preventDefault();
 
     const formData = new FormData(ev.target);
+    const username = formData.get('username');
     const email = formData.get('email');
     const password = formData.get('password');
     const repass = formData.get('repass');
@@ -43,6 +46,7 @@ export default function Register() {
         }))
 
       setUserInput({
+        username: '',
         email: '',
         password: '',
         repass: ''
@@ -50,7 +54,7 @@ export default function Register() {
       return;
     }
 
-    authService.register(email, password)
+    authService.register(username, email, password)
       .then((userData) => {
 
         userLogin(userData);
@@ -62,6 +66,7 @@ export default function Register() {
           match: err.message
         }))
         setUserInput({
+          username: '',
           email: '',
           password: '',
           repass: ''
@@ -78,6 +83,18 @@ export default function Register() {
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
+  }
+
+  function validateUsername(ev) {
+    if (ev.target.value.length > 10) {
+      errorMessage = 'Username must be no longer than 10 symbols.';
+    } else if (ev.target.value.length < 3) {
+      errorMessage = 'Username must be at least 3 symbols.';
+    }
+    setError(state => ({
+      ...state,
+      username: errorMessage
+    }))
   }
 
   function validateEmail(ev) {
@@ -109,6 +126,20 @@ export default function Register() {
           <h1>Register</h1>
           <p>Please fill in this form to create an account.</p>
           <hr />
+          <div className="username">
+            <label htmlFor="username">Username</label>
+            <input type="username"
+              name="username" required
+              id="username"
+              placeholder="Enter Username"
+              value={userInput.username}
+              onChange={onChange}
+              onBlur={validateUsername}
+            />
+            {error.email
+              ? <p style={{ color: 'red' }}>{error.username}</p>
+              : null}
+          </div>
           <div className="email">
             <label htmlFor="email">Email</label>
             <input type="email"

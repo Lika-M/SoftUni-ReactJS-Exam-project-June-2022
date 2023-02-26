@@ -57,6 +57,10 @@
     flex-basis: 30%;
 }
 
+.my-card-info-text .rating {
+    margin-bottom: 30px;
+}
+
 .my-card-info-text .rating h3{
 color: #000;
     font-size: 14px;
@@ -94,7 +98,7 @@ color: #000;
     font-size: 14px;
 }
 
-.my-card-info-text .details-button {
+.details-button {
     background-color: #8cca60;
     box-shadow:  1px 10px 10px 0px  rgba(0, 0, 0, 0.5);
     color: #fff;
@@ -102,8 +106,6 @@ color: #000;
     font-weight: bold;
     padding: 10px 30px;
     letter-spacing: 1px;
-    position:relative;
-    bottom: -30px;
 }
 
 .my-card .no-articles{

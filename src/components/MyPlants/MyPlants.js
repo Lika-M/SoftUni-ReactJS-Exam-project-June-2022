@@ -16,7 +16,7 @@ export default function MyPlants() {
         dataService.getMyItems(user._id)
             .then(result => {
                 setMyPlants(result)
-            })
+            });
     }, [user._id])
 
     return (
@@ -26,7 +26,7 @@ export default function MyPlants() {
                 <span>Add New Item</span>
             </Link>
             {myPlants.length > 0
-                ? myPlants.map(x => <MyPlant key={x._id} plant={x} />)
+                ? myPlants.map(x => <MyPlant key={x.objectId} plant={x} />)
                 : <h3 className="no-articles">You have no articles yet</h3>}
         </section>
     );

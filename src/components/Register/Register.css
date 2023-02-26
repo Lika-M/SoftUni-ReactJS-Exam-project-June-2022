@@ -33,6 +33,7 @@
 }
 
 .container input[type="text"],
+input[type="username"],
 input[type="email"],
 input[type="number"],
 input[type="password"],
@@ -46,6 +47,7 @@ select[type="text"] {
 }
 
 .container input[type="text"]:focus,
+input[type="username"]:focus,
 input[type="email"]:focus,
 input[type="number"]:focus,
 input[type="password"]:focus,
@@ -88,6 +90,7 @@ select[type="text"]:focus {
     margin-left: 8px;
 }
 
+.username,
 .email,
 .password,
 .repass {

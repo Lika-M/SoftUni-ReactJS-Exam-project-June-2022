@@ -1,19 +1,16 @@
-const host = 'https://softuni-exam-project-app.herokuapp.com';
+import { getUserData } from "./util.js";
+const host = 'https://parseapi.back4app.com';
 
 async function request(url, options) {
+
     try {
         const response = await fetch(host + url, options);
 
-        if (response.ok !== true) {
+        if (response.ok === false) {
             const error = await response.json();
-            throw new Error(error.message);
+            throw new Error('Error ' + error.code + ': ' + error.error);
         }
-
-        try {
-            return await response.json();
-        } catch (err) {
-            return response;
-        }
+        return response.json();
 
     } catch (err) {
         throw err;
@@ -23,17 +20,23 @@ async function request(url, options) {
 function createOptions(method = 'GET', data) {
     const options = {
         method,
-        headers: {}
+        headers: {
+            'X-Parse-Application-Id': '8z8YMwEuW11p0FZHBlSfVSx1zbzYNoiWhNFso10N',
+            'X-Parse-REST-API-Key': 'gWyCYfBHEW0U32Aqi4fBr6bpZVYFxkN0Te3IEDv5'
+        }
     };
-    if (data !== undefined) {
+
+    const userData = getUserData();
+    
+    if (userData && userData.token) {
+        options.headers['X-Parse-Session-Token'] = userData.token;
+    }
+
+    if (data) {
         options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(data);
     }
-    const userData = JSON.parse(localStorage.getItem('userData'));
 
-    if (userData.token) {
-        options.headers['X-Authorization'] = userData.token;
-    }
     return options;
 }
 
@@ -46,10 +49,11 @@ async function post(url, data) {
 }
 
 async function put(url, data) {
-    return request(url, createOptions('PUT', data))
+    return request(url, createOptions('PUT', data));
 }
+
 async function del(url) {
-    return request(url, createOptions('DELETE'))
+    return request(url, createOptions('DELETE'));
 }
 
 export {

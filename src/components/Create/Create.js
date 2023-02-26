@@ -9,8 +9,8 @@ export default function Create() {
 
     const [err, setErr] = useState({});
     const [input, setInput] = useState({
-        'plant-name': '',
-        'latin-name': '',
+        name: '',
+        latin: '',
         imgUrl: '',
         type: '',
         exposure: '',
@@ -68,7 +68,7 @@ export default function Create() {
         const message = validateMessage(ev);
         setErr(state => ({
             ...state,
-            'plant-name': message
+            name: message
         }));
     }
 
@@ -76,7 +76,7 @@ export default function Create() {
         const message = validateMessage(ev);
         setErr(state => ({
             ...state,
-            'latin-name': message
+            latin: message
         }));
     }
 
@@ -113,24 +113,24 @@ export default function Create() {
 
                     <label htmlFor="name">Plant Name</label>
                     <input type="text" id="name" placeholder="Enter Plant Name"
-                        name="plant-name"
+                        name="name"
                         value={input.name}
                         onChange={onChange}
                         onBlur={validateName}
                     />
-                    {err['plant-name']
-                        ? <p style={{ color: 'red' }}>{err["plant-name"]}</p>
+                    {err.name
+                        ? <p style={{ color: 'red' }}>{err.name}</p>
                         : null}
 
                     <label htmlFor="latin">Latin Name</label>
                     <input type="text" id="latin" placeholder="Enter Latin Name"
-                        name="latin-name"
+                        name="latin"
                         value={input.latin}
                         onChange={onChange}
                         onBlur={validateLatinName}
                     />
-                    {err['latin-name']
-                        ? <p style={{ color: 'red' }}>{err["latin-name"]}</p>
+                    {err.latin
+                        ? <p style={{ color: 'red' }}>{err.latin}</p>
                         : null}
 
                     <label htmlFor="imgUrl">Plant Image</label>
@@ -151,8 +151,8 @@ export default function Create() {
                     >
                         <option value={""} className="label"></option>
                         <option value={"Trees"}>Trees</option>
-                        <option value={"shrubs"}>Shrubs</option>
-                        <option value={"Shrubs"}>Climbers</option>
+                        <option value={"Shrubs"}>Shrubs</option>
+                        <option value={"Climbers"}>Climbers</option>
                         <option value={"Perennials"}>Perennials</option>
                         <option value={"Herbs"}>Herbs</option>
                     </select>

@@ -8,7 +8,7 @@ export function OwnerPrivateRoute({children}) {
     const { user } = useContext(AuthContext);
     const { plants } = useContext(DataContext);
 
-    const myItem = plants.items.find(x => x._ownerId === user._id)
+    const myItem = plants.items.find(x => x.owner.objectId === user._id)
 
     if (!myItem) {
         return <Navigate to={'/login'} replace />

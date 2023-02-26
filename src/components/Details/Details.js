@@ -39,19 +39,19 @@ export default function Details() {
   useEffect(() => {
     dataService.getVoteByPlantId(plantId)
       .then(res => {
-        setVote(state => {
-          return {
-            ...state,
-            plant: res
-          }
-        })
+          setVote(state => {
+            return {
+              ...state,
+              plant: res.length
+            }
+          })
       })
   }, [plantId])
 
   useEffect(() => {
     dataService.getMyVoteByPlantId(plantId, user._id)
       .then(res => {
-        if (res > 0) {
+        if (res.length > 0) {
           setVote(state => {
             return {
               ...state,
@@ -65,16 +65,17 @@ export default function Details() {
   useEffect(() => {
     dataService.getAllVotes()
       .then(res => {
-        setVote(state => {
-          return {
-            ...state,
-            allPlants: res.length
-          }
-        })
+          setVote(state => {
+            return {
+              ...state,
+              allPlants: res.length
+            }
+          });
       });
   }, []);
 
-  const isOwner = user._id === plant._ownerId;
+  const isOwner = plant.owner && user._id === plant.owner.objectId;
+
   let buttons = null;
 
   if (user._id !== undefined) {
@@ -126,7 +127,7 @@ export default function Details() {
   }
 
   function onVote() {
-    dataService.voteForItem({ plantId })
+    dataService.voteForItem(plantId, {})
       .then(res => {
         setVote(state => {
           return {
@@ -157,7 +158,7 @@ export default function Details() {
               <div className="card-background-wrapper">
                 <img
                   src={plant.imgUrl}
-                  alt={`${plant['plant-name']}`} />
+                  alt={`${plant.name}`} />
               </div>
             </div>
             <div className="plant-card-info">
@@ -165,8 +166,8 @@ export default function Details() {
                 <button className="details-btn-close" onClick={onClose}>
                   <i style={{ fontSize: "20px" }} className="fa-solid fa-xmark"></i>
                 </button>
-                <h4 className="name" > {plant['plant-name']}</h4>
-                <h6 className="latin"> {plant['latin-name']}</h6>
+                <h4 className="name" > {plant.name}</h4>
+                <h6 className="latin"> {plant.latin}</h6>
               </div>
               <div className="plant-card-info-text">
                 <div className="left">
@@ -189,7 +190,7 @@ export default function Details() {
             </div >
             {modal.show &&
               <Modal
-                name={plant['plant-name']}
+                name={plant.name}
                 handleDeleteTrue={handleDeleteTrue}
                 handleDeleteFalse={handleDeleteFalse}
               />}

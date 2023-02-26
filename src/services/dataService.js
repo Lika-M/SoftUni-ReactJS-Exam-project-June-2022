@@ -1,65 +1,77 @@
 import * as api from './api.js';
+import { addOwner, createPointer, createPointerQuery } from './util';
 
 const endpoints = {
-    last: '/data/plants?sortBy=_createdOn%20desc',
-    all: '/data/plants',
-    type: (type) => `/data/plants?where=type%3D%22${type}%22&sortBy=_createdOn%20desc`,
-    myItems: (userId) => `/data/plants?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`,
-    create: '/data/plants',
-    itemById: '/data/plants/',
-    edit: '/data/plants/',
-    vote: '/data/vote',
-    voteById: (plantId) => `/data/vote?where=plantId%3D%22${plantId}%22&count`,
-    myVote: (plantId, userId) => `/data/vote?where=plantId%3D%22${plantId}%22%20and%20_ownerId%3D%22${userId}%22&count`,
+    last: '/classes/Plants?order=-createdAt',
+    all: '/classes/Plants',
+    type: (type) => `/classes/Plants?where={"type": "${type}"}&order=-createdAt`,
+    create: '/classes/Plants',
+    itemById: '/classes/Plants/',
+    editBbyId: '/classes/Plants/',
+    myItems: (userId) => `/classes/Plants?where=${createPointerQuery('owner', '_User', userId)}&order=-createdAt`,
+    vote: '/classes/Vote',
+    voteById: (plantId) => `/classes/Vote?where=${createPointerQuery('plant', 'Plants', plantId)}`,
+    myVote: (plantId, userId) => `/classes/Vote?where={"plant": ${encodeURIComponent(JSON.stringify(createPointer('Plants', plantId)))}, "owner": ${encodeURIComponent(JSON.stringify(createPointer('_User', userId)))}}`
+
 }
 
 export async function getAll(type = '') {
-    
+    let data;
     if (type) {
         if (type === 'All') {
-            return api.get(endpoints.last);
+            data = await api.get(endpoints.last);
         } else {
-            return api.get(endpoints.type(type));
+            data = await api.get(endpoints.type(type));
         }
+        return await data.results;
     }
-    return api.get(endpoints.all);
+    data = await api.get(endpoints.all);
+    return data.results;
 }
 
 export async function getItemById(id) {
-    return api.get(endpoints.itemById + id);
+    return await api.get(endpoints.itemById + id);
 }
 
 export async function createItem(data) {
-    return api.post(endpoints.create, data);
+    addOwner(data)
+    const plant = await api.post(endpoints.create, data);
+    const plants = await api.get(endpoints.myItems(data.owner.objectId));
+    const currentItem = plants.results.find(x => x.objectId === plant.objectId);
+    return currentItem;
 }
 
 export async function editItem(data, id) {
-    return api.put(endpoints.edit + id, data);
+       await api.put(endpoints.itemById + id, data);
+       return await api.get(endpoints.itemById + id);
 }
 
 export async function deleteItemById(id) {
-    return api.delete(endpoints.itemById + id);
+    await api.delete(endpoints.itemById + id);
 }
 
-export async function getMyItems(id){
-    return api.get(endpoints.myItems(id))
+export async function getMyItems(id) {
+    const res = await api.get(endpoints.myItems(id))
+    return res.results;
 }
 
-export async function voteForItem(data) {
-    return api.post(endpoints.vote, data);
+export async function voteForItem(id, data) {
+    data.plant = createPointer('Plants', id);
+    addOwner(data);
+    return await api.post(endpoints.vote, data);
 }
 
-export async function getVoteByPlantId(id){
-    return api.get(endpoints.voteById(id));
+export async function getVoteByPlantId(id) {
+    const res = await api.get(endpoints.voteById(id));
+    return res.results;
 }
 
-export async function getMyVoteByPlantId(plantId, userId){
-    return api.get(endpoints.myVote(plantId, userId));
+export async function getMyVoteByPlantId(plantId, userId) {
+    const res = await api.get(endpoints.myVote(plantId, userId));
+    return res.results;
 }
 
-export async function getAllVotes(){
-    return api.get(endpoints.vote);
+export async function getAllVotes() {
+    const res = await api.get(endpoints.vote);
+    return res.results;
 }
-
-
-
